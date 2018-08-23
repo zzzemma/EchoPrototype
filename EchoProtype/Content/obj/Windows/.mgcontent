@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/ball.png</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/brick.png</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/MissSound.wav</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/PaddleBounceSound.wav</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/StartSound.wav</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/WallBounceSound.wav</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/Arial20.spritefont</File>
+    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/BrickSound.wav</File>
+  </SourceFiles>
+</SourceFileCollection>
