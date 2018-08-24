@@ -26,8 +26,8 @@ namespace EchoProtype
             maze = new Wall[4];
             maze[0] = new Wall(1*W, 1*H,true, spriteBatch, gameContent);
             maze[1] = new Wall(1 * W, 1 * H, false, spriteBatch, gameContent);
-            maze[2] = new Wall(5 * W, 1 * H, false, spriteBatch, gameContent);
-            maze[3] = new Wall(3 * W, 1 * H, false, spriteBatch, gameContent);
+            maze[2] = new Wall(3 * W, 1 * H, false, spriteBatch, gameContent);
+            maze[3] = new Wall(5 * W, 1 * H, false, spriteBatch, gameContent);
         }
 
         public void Draw()

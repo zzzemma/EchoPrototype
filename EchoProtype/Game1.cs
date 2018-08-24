@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace EchoProtype
 {
@@ -13,6 +14,8 @@ namespace EchoProtype
         SpriteBatch spriteBatch;
         GameContent gameContent;
         private Player player;
+        private float damageTimer;
+        private float delayTime;
         private Maze maze;
         private int screenWidth = 0;
         private int screenHeight = 0;
@@ -34,7 +37,7 @@ namespace EchoProtype
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            delayTime = 2; // delay inbetween taking damage
             base.Initialize();
         }
 
@@ -117,6 +120,51 @@ namespace EchoProtype
                 player.MoveDown();
             }
 
+            player.playerRect = new Rectangle((int)player.X, (int)player.Y, (int)(player.Width + player.Width*.5), (int)(player.Height + player.Height*.5));//keeps track of player position
+
+            //checks for collisions
+            for (int i = 0; i < maze.maze.Length; i++)
+            {
+                if(HitTest(player.playerRect,maze.maze[i].wallRect))
+                {
+                    //makes player take damage
+                    if (player.canTakeDamage)
+                    {
+                        player.Health -= maze.maze[i].damage;
+                        damageTimer = (float)gameTime.TotalGameTime.TotalSeconds;
+                        player.canTakeDamage = false;
+                    }
+
+
+                    // collision pushes player in the direction opposite of their movement.
+                    if (newKeyboardState.IsKeyDown(Keys.Left))
+                    {
+                        player.MoveRight();
+                    }
+                    if (newKeyboardState.IsKeyDown(Keys.Right))
+                    {
+                        player.MoveLeft();
+                    }
+                    if (newKeyboardState.IsKeyDown(Keys.Up))
+                    {
+                        player.MoveDown();                      
+                    }
+                    if (newKeyboardState.IsKeyDown(Keys.Down))
+                    {
+                        player.MoveUp();
+                    }
+                }
+            }
+            Console.WriteLine(player.Health);
+            if(gameTime.TotalGameTime.TotalSeconds >= damageTimer + delayTime)
+            {
+                player.canTakeDamage = true;
+            }
+
+            if(player.Health <= 0 && player.Visible)
+            {
+                player.Visible = false;
+            }
             oldMouseState = newMouseState; // this saves the old state      
             oldKeyboardState = newKeyboardState;
 
@@ -138,6 +186,18 @@ namespace EchoProtype
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public static bool HitTest(Rectangle r1, Rectangle r2)
+        {
+            if (Rectangle.Intersect(r1, r2) != Rectangle.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
