@@ -13,25 +13,20 @@ namespace EchoProtype
     class GameContent
     {
         public Texture2D imgBrick { get; set; }
+        public Texture2D imgTitle { get; set; }
         public SpriteFont labelFont { get; set; }
         public Texture2D imgBall { get; set; }
-        public SoundEffect startSound { get; set; }
-        public SoundEffect brickSound { get; set; }
-        public SoundEffect paddleBounceSound { get; set; }
-        public SoundEffect wallBounceSound { get; set; }
-        public SoundEffect missSound { get; set; }
+        public SoundEffect echoAmb { get; set; }
+   
 
       
         public GameContent(ContentManager Content)
         {
-            startSound = Content.Load<SoundEffect>("StartSound");
-            brickSound = Content.Load<SoundEffect>("BrickSound");
-            paddleBounceSound = Content.Load<SoundEffect>("PaddleBounceSound");
-            wallBounceSound = Content.Load<SoundEffect>("WallBounceSound");
-            missSound = Content.Load<SoundEffect>("MissSound");
+            echoAmb = Content.Load<SoundEffect>("echoAmb");
             imgBall = Content.Load<Texture2D>("Ball");
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
+            imgTitle = Content.Load<Texture2D>("Title");
         }
     }
 }

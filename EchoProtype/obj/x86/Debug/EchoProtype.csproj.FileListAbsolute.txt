@@ -31,3 +31,5 @@ C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\obj\x86\Debug\EchoProtype
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\obj\x86\Debug\EchoProtype.pdb
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\BrickSound.xnb
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\obj\x86\Debug\EchoProtype.csprojAssemblyReference.cache
+C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\Title.xnb
+C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\echoAmb.xnb

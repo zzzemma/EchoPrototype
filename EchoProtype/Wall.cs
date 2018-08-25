@@ -17,7 +17,7 @@ namespace EchoProtype
         public float Width { get; set; } //width of brick
         public float Height { get; set; } //height of brick
         public bool Visible { get; set; } //does brick still exist?
-        public float Rotataion { get; set; } //Roiation of wall
+        public float Rotation { get; set; } //Roiation of wall
         public Rectangle wallRect { get; set; }
 
         public int damage { get; set; }
@@ -47,11 +47,11 @@ namespace EchoProtype
             Visible = true;
             if(vert)
             {
-                Rotataion = 1.57f;
+                Rotation = 1.57f;
             }
             else
             {
-                Rotataion = 0;
+                Rotation = 0;
             }
             this.color = Color.Yellow;
         }    
@@ -60,7 +60,7 @@ namespace EchoProtype
         {
             if (Visible)
             {
-                spriteBatch.Draw(imgBrick, new Vector2(X, Y), null, color, Rotataion, new Vector2(0, 0), 2.0f, SpriteEffects.None, 0);               
+                spriteBatch.Draw(imgBrick, new Vector2(X, Y), null, color, Rotation, new Vector2(0, 0), 2.0f, SpriteEffects.None, 0);               
             }
         }
     }
