@@ -18,7 +18,7 @@ namespace EchoProtype
         private TitleScreen titleScreen;
         private float damageTimer;
         private float delayTime;
-        private Maze maze;
+        private ObstacleSpawner obstacleSpawner;
         private int screenWidth = 0;
         private int screenHeight = 0;
         private MouseState oldMouseState;
@@ -74,7 +74,7 @@ namespace EchoProtype
             player = new Player(0.0f,650.0f,screenWidth, spriteBatch, gameContent);
             titleScreen = new TitleScreen(screenWidth, screenHeight, spriteBatch,gameContent);
            
-            maze = new Maze(1.0f, 1.0f, spriteBatch, gameContent);
+            obstacleSpawner = new ObstacleSpawner(8,screenWidth, screenWidth-100, screenHeight-100,100,300,100,5, spriteBatch, gameContent);
 
         }
 
@@ -139,14 +139,14 @@ namespace EchoProtype
             player.playerRect = new Rectangle((int)player.X, (int)player.Y, (int)(player.Width + player.Width*.5), (int)(player.Height + player.Height*.5));//keeps track of player position
 
             //checks for collisions
-            for (int i = 0; i < maze.maze.Length; i++)
+            for (int i = 0; i < obstacleSpawner.obstacles.Length; i++)
             {
-                if(HitTest(player.playerRect,maze.maze[i].wallRect))
+                if(obstacleSpawner.obstacles[i].Visible && HitTest(player.playerRect,obstacleSpawner.obstacles[i].hitBox))
                 {
                     //makes player take damage
                     if (player.canTakeDamage)
                     {
-                        player.Health -= maze.maze[i].damage;
+                        player.Health -= obstacleSpawner.obstacles[i].damage;
                         damageTimer = (float)gameTime.TotalGameTime.TotalSeconds;
                         player.canTakeDamage = false;
                     }
@@ -156,22 +156,27 @@ namespace EchoProtype
                     if (newKeyboardState.IsKeyDown(Keys.Left))
                     {
                         player.MoveRight();
-                    }
-                    if (newKeyboardState.IsKeyDown(Keys.Right))
-                    {
-                        player.MoveLeft();
+                        player.MoveRight();
                     }
                     if (newKeyboardState.IsKeyDown(Keys.Up))
                     {
+                        player.MoveLeft();
+                        player.MoveLeft();
                         player.MoveDown();                      
                     }
                     if (newKeyboardState.IsKeyDown(Keys.Down))
                     {
+                        player.MoveLeft();
+                        player.MoveLeft();
                         player.MoveUp();
+                    }
+                    else
+                    {
+                        player.MoveLeft();
+                        player.MoveLeft();
                     }
                 }
             }
-            Console.WriteLine(player.Health);
             if(gameTime.TotalGameTime.TotalSeconds >= damageTimer + delayTime)
             {
                 player.canTakeDamage = true;
@@ -183,7 +188,8 @@ namespace EchoProtype
             }
             oldMouseState = newMouseState; // this saves the old state      
             oldKeyboardState = newKeyboardState;
-
+            obstacleSpawner.Spawn(gameTime);
+            obstacleSpawner.CleanUp();
             base.Update(gameTime);
         }
 
@@ -206,7 +212,7 @@ namespace EchoProtype
             else
             {
                 player.Draw();
-                maze.Draw();
+                obstacleSpawner.Draw();
             }
             spriteBatch.End();
 

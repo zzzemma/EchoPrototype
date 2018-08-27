@@ -16,6 +16,7 @@ namespace EchoProtype
         public Texture2D imgTitle { get; set; }
         public SpriteFont labelFont { get; set; }
         public Texture2D imgBall { get; set; }
+        public Texture2D imgStag { get; set; }
         public SoundEffect echoAmb { get; set; }
    
 
@@ -27,6 +28,7 @@ namespace EchoProtype
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
             imgTitle = Content.Load<Texture2D>("Title");
+            imgStag = Content.Load<Texture2D>("vertbrick");
         }
     }
 }

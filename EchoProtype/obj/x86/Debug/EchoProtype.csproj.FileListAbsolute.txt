@@ -33,3 +33,4 @@ C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Con
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\obj\x86\Debug\EchoProtype.csprojAssemblyReference.cache
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\Title.xnb
 C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\echoAmb.xnb
+C:\Users\u0764291\source\repos\EchoProtype\EchoProtype\bin\Windows\x86\Debug\Content\vertbrick.xnb
