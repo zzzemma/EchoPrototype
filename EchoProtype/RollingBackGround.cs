@@ -38,13 +38,14 @@ namespace EchoProtype
             public void Load(SpriteBatch spriteBatch, GameContent content)
             {
                 this.spriteBatch = spriteBatch;
-               // backgroundTexture = content.backgroundTexture;
+                backgroundTexture = content.backgroundTexture;
                 windowSize = spriteBatch.GraphicsDevice.PresentationParameters.Bounds.Size;
             }
 
             public void Update(GameTime gameTime)
             {
-                currentTime = (float)(gameTime.TotalGameTime.TotalMilliseconds / 100);
+                //Console.WriteLine("gameTime: "+gameTime.TotalGameTime.TotalMilliseconds);
+                currentTime = (float)gameTime.TotalGameTime.TotalMilliseconds / 100;
             }
 
             public void Draw()
@@ -53,7 +54,6 @@ namespace EchoProtype
                 destinationRec.Size = windowSize;
                 var sourceRec = new Rectangle();
                 sourceRec.Size = new Point(backgroundTexture.Width, backgroundTexture.Height);
-                Console.WriteLine(currentTime);
                 sourceRec.Offset(currentTime * rollSpeed, 0);
                 spriteBatch.Draw(backgroundTexture,
                     destinationRec,

@@ -4,16 +4,31 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/ball.png</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/brick.png</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/MissSound.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/PaddleBounceSound.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/StartSound.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/WallBounceSound.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/Arial20.spritefont</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/BrickSound.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/Title.png</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/echoAmb.wav</File>
-    <File>C:/Users/u0764291/source/repos/EchoProtype/EchoProtype/Content/vertbrick.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/ball.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/brick.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/MissSound.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/PaddleBounceSound.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/StartSound.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/WallBounceSound.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Arial20.spritefont</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/BrickSound.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Title.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echoAmb.wav</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/cave temp.jpg</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat01.gif</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat02.gif</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat03.gif</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat04.gif</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bgsound.mp3</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black01.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black02.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black03.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echosound.mp3</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Maze1.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/snake01.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/sightBlocker.jpg</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/newCaveBackground.jpg</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/vertbrick.png</File>
   </SourceFiles>
 </SourceFileCollection>

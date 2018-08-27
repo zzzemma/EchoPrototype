@@ -16,14 +16,16 @@ namespace EchoProtype
         GameContent gameContent;
         private Player player;
         private TitleScreen titleScreen;
+        private RollingBackGround backGround;
         private float damageTimer;
         private float delayTime;
-        private ObstacleSpawner obstacleSpawner;
+        private Maze maze;
         private int screenWidth = 0;
         private int screenHeight = 0;
         private MouseState oldMouseState;
         private KeyboardState oldKeyboardState;
         private bool gameStart;
+        private ObstacleSpawner obstacleSpawner;
 
         public Game1()
         {
@@ -71,10 +73,13 @@ namespace EchoProtype
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.ApplyChanges();
 
-            player = new Player(0.0f,650.0f,screenWidth, spriteBatch, gameContent);
+            player = new Player(200.0f,350.0f,screenWidth, spriteBatch, gameContent);
             titleScreen = new TitleScreen(screenWidth, screenHeight, spriteBatch,gameContent);
-           
-            obstacleSpawner = new ObstacleSpawner(8,screenWidth, screenWidth-100, screenHeight-100,100,300,100,5, spriteBatch, gameContent);
+            backGround = new RollingBackGround();
+            backGround.Load(spriteBatch, gameContent);
+
+            obstacleSpawner = new ObstacleSpawner(8, screenWidth, screenWidth - 100, screenHeight - 100, 100, 300, 100, 5, spriteBatch, gameContent);
+
 
         }
 
@@ -93,7 +98,9 @@ namespace EchoProtype
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
-        {        
+        {
+            backGround.Update(gameTime);
+            player.Update(gameTime);
 
             if (IsActive == false)
             {
@@ -108,14 +115,15 @@ namespace EchoProtype
             MouseState newMouseState = Mouse.GetState();
             
             //process keyboard events                           
-            if (newKeyboardState.IsKeyDown(Keys.Left))
-            {
-                player.MoveLeft();
-            }
-            if (newKeyboardState.IsKeyDown(Keys.Right))
-            {
-                player.MoveRight();
-            }
+            //if (newKeyboardState.IsKeyDown(Keys.Left))
+            //{
+            //    player.MoveLeft();
+            //}
+            //if (newKeyboardState.IsKeyDown(Keys.Right))
+            //{
+            //    player.MoveRight();
+            //}
+
             if (newKeyboardState.IsKeyDown(Keys.Up))
             {
                 player.MoveUp();
@@ -141,7 +149,7 @@ namespace EchoProtype
             //checks for collisions
             for (int i = 0; i < obstacleSpawner.obstacles.Length; i++)
             {
-                if(obstacleSpawner.obstacles[i].Visible && HitTest(player.playerRect,obstacleSpawner.obstacles[i].hitBox))
+                if(obstacleSpawner.obstacles[i].Visible && HitTest(player.playerRect, obstacleSpawner.obstacles[i].hitBox))
                 {
                     //makes player take damage
                     if (player.canTakeDamage)
@@ -162,7 +170,7 @@ namespace EchoProtype
                     {
                         player.MoveLeft();
                         player.MoveLeft();
-                        player.MoveDown();                      
+                        player.MoveDown();
                     }
                     if (newKeyboardState.IsKeyDown(Keys.Down))
                     {
@@ -177,6 +185,7 @@ namespace EchoProtype
                     }
                 }
             }
+
             if(gameTime.TotalGameTime.TotalSeconds >= damageTimer + delayTime)
             {
                 player.canTakeDamage = true;
@@ -199,22 +208,36 @@ namespace EchoProtype
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
             //Title Screen
             if (!gameStart)
             {
+                spriteBatch.Begin();
+
                 PlaySound(gameContent.echoAmb);
                 titleScreen.Draw();
+
+                spriteBatch.End();
             }
             else
             {
-                player.Draw();
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
+
+                backGround.Draw();
+
+                spriteBatch.End();
+
+                spriteBatch.Begin();
+
                 obstacleSpawner.Draw();
+
+                spriteBatch.End();
+
+                player.Draw();
+
             }
-            spriteBatch.End();
 
             base.Draw(gameTime);
         }
