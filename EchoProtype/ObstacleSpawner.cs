@@ -50,7 +50,7 @@ namespace EchoProtype
             }
         }
         public void Draw()
-        {
+        {          
             for (int i = 0; i < obstacles.Length; i++)
             {
                 if(obstacles[i].Visible)
@@ -86,9 +86,9 @@ namespace EchoProtype
 
         }
 
-        public void Spawn(GameTime gameTime)
+        public void Spawn(GameTime gameTime, bool gameStart)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length)
+            if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length && gameStart)
             {
                 Console.WriteLine("Create Success on: " + spawnTimer);
                 obstacles[counter].Visible = true;

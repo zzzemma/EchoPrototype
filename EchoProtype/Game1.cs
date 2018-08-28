@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -20,7 +19,6 @@ namespace EchoProtype
         private RollingBackGround backGround;
         private float damageTimer;
         private float delayTime;
-        private Maze maze;
         private int screenWidth = 0;
         private int screenHeight = 0;
         private MouseState oldMouseState;
@@ -44,7 +42,7 @@ namespace EchoProtype
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            delayTime = 2; // delay inbetween taking damage
+            delayTime = 1; // delay inbetween taking damage
             gameStart = false;
             base.Initialize();
         }
@@ -83,7 +81,8 @@ namespace EchoProtype
 
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
-            obstacleSpawner = new ObstacleSpawner(80, screenWidth, screenWidth - 100, screenHeight - 100, 100, 1500, 500, 5, spriteBatch, gameContent);
+            //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            obstacleSpawner = new ObstacleSpawner(150, screenWidth, screenWidth - 100, screenHeight - 100, 100, 750, 250, 9, spriteBatch, gameContent);
 
 
         }
@@ -209,7 +208,7 @@ namespace EchoProtype
             }
             oldMouseState = newMouseState; // this saves the old state      
             oldKeyboardState = newKeyboardState;
-            obstacleSpawner.Spawn(gameTime);
+            obstacleSpawner.Spawn(gameTime,gameStart);
             obstacleSpawner.CleanUp();
             base.Update(gameTime);
         }
@@ -227,8 +226,6 @@ namespace EchoProtype
             if (!gameStart)
             {
                 spriteBatch.Begin();
-
-                PlaySound(gameContent.echoAmb);
                 titleScreen.Draw();
 
                 spriteBatch.End();
@@ -264,14 +261,6 @@ namespace EchoProtype
             {
                 return false;
             }
-        }
-
-        public static void PlaySound(SoundEffect sound)
-        {
-            float volume = 1;
-            float pitch = 0.0f;
-            float pan = 0.0f;
-            sound.Play(volume, pitch, pan);
         }
     }
 }

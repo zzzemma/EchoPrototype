@@ -44,7 +44,7 @@ namespace EchoProtype
             Visible = true;
             X = x;
             Y = y;
-            Health = 100;
+            Health = 50;
 
             //imgPlayer = gameContent.imgBall;
 
