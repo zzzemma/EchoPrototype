@@ -138,3 +138,4 @@ C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\obj\x86\Debug\EchoProtype.csproj.CopyComplete
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\FG.xnb

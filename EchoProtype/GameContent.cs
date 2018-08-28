@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace EchoProtype
 {
@@ -26,6 +27,7 @@ namespace EchoProtype
 
         public List<Texture2D> batList { get; set; }
         public Texture2D imgStag { get; set; }
+        public Song songbg { get; set; }
 
         public GameContent(ContentManager Content)
         {
@@ -34,9 +36,10 @@ namespace EchoProtype
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
             imgTitle = Content.Load<Texture2D>("Title");
-            backgroundTexture = Content.Load<Texture2D>("newCaveBackground");
+            backgroundTexture = Content.Load<Texture2D>("FG");
             blacksmall = Content.Load<Texture2D>("black");
             imgStag = Content.Load<Texture2D>("vertbrick");
+            songbg = Content.Load<Song>("bgsound");
 
             blackEchoList = new List<Texture2D>();
             for (var i = 0; i < 3; i++)

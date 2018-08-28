@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 namespace EchoProtype
@@ -78,9 +79,20 @@ namespace EchoProtype
             backGround = new RollingBackGround();
             backGround.Load(spriteBatch, gameContent);
 
-            obstacleSpawner = new ObstacleSpawner(8, screenWidth, screenWidth - 100, screenHeight - 100, 100, 300, 100, 5, spriteBatch, gameContent);
+            MediaPlayer.Play(gameContent.songbg);
+
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
+            obstacleSpawner = new ObstacleSpawner(80, screenWidth, screenWidth - 100, screenHeight - 100, 100, 1500, 500, 5, spriteBatch, gameContent);
 
 
+        }
+
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Play(gameContent.songbg);
         }
 
         /// <summary>
@@ -113,16 +125,16 @@ namespace EchoProtype
             // TODO: Add your update logic here
             KeyboardState newKeyboardState = Keyboard.GetState();
             MouseState newMouseState = Mouse.GetState();
-            
+
             //process keyboard events                           
-            //if (newKeyboardState.IsKeyDown(Keys.Left))
-            //{
-            //    player.MoveLeft();
-            //}
-            //if (newKeyboardState.IsKeyDown(Keys.Right))
-            //{
-            //    player.MoveRight();
-            //}
+            if (newKeyboardState.IsKeyDown(Keys.Left))
+            {
+                player.MoveLeft();
+            }
+            if (newKeyboardState.IsKeyDown(Keys.Right))
+            {
+                player.MoveRight();
+            }
 
             if (newKeyboardState.IsKeyDown(Keys.Up))
             {
@@ -208,7 +220,7 @@ namespace EchoProtype
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Brown);
 
             // TODO: Add your drawing code here
             //Title Screen
@@ -223,11 +235,6 @@ namespace EchoProtype
             }
             else
             {
-                spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
-
-                backGround.Draw();
-
-                spriteBatch.End();
 
                 spriteBatch.Begin();
 
@@ -237,6 +244,11 @@ namespace EchoProtype
 
                 player.Draw();
 
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
+
+                backGround.Draw();
+
+                spriteBatch.End();
             }
 
             base.Draw(gameTime);

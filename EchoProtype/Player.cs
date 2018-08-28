@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace EchoProtype
 {
@@ -90,8 +91,8 @@ namespace EchoProtype
                 batDestinationRec.Y = (int)this.Y;
                 batDestinationRec.Size = batSize;
 
-                var sightOffset = new Point(-10, -22);
-                var sightSize = new Point(2000, 2000);
+                var sightOffset = new Point(-10, -30);
+                var sightSize = new Point(5000, 10000);
 
                 var sightDestinationRec = new Rectangle();
                 sightDestinationRec.X = (int)this.X;
@@ -136,13 +137,13 @@ namespace EchoProtype
         public void MoveUp()
         {
             Y = Y - 5;
-            _rotationAngle -= 0.1f;
+            //_rotationAngle -= 0.1f;
             _rotationAngle = Math.Max(_rotationAngle, -MathHelper.Pi / 2);
         }
         public void MoveDown()
         {
             Y = Y + 5;
-            _rotationAngle += 0.1f;
+            //_rotationangle += 0.1f;
             _rotationAngle = Math.Min(_rotationAngle, MathHelper.Pi / 2);
         }
         public void MoveRight()
