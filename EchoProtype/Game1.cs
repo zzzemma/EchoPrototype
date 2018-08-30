@@ -1,14 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using System;
+using Microsoft.Xna.Framework.Audio;
 
 namespace EchoProtype
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -27,6 +26,8 @@ namespace EchoProtype
         private bool gameStart;
         private bool gameOver;
         private ObstacleSpawner obstacleSpawner;
+        private Scoremanager time;
+        public List<SoundEffect> soundEffects;
         private Consumable consumable;
 
         public Game1()
@@ -34,30 +35,19 @@ namespace EchoProtype
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
             Content.RootDirectory = "Content";
+            soundEffects = new List<SoundEffect>();
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             delayTime = 750; // delay inbetween taking damage change
             gameStart = false;
             gameOver = false;
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -76,8 +66,9 @@ namespace EchoProtype
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.ApplyChanges();
 
-            player = new Player(200.0f,350.0f,screenWidth,screenHeight, spriteBatch, gameContent);
+            player = new Player(200.0f,350.0f,screenWidth,screenHeight, spriteBatch, gameContent, this);
             titleScreen = new TitleScreen(screenWidth, screenHeight, spriteBatch,gameContent);
+            time = new Scoremanager(screenWidth, screenHeight, spriteBatch, gameContent);
             gameOverScreen = new EndingScreen(screenWidth, screenHeight, spriteBatch, gameContent); //change
             backGround = new RollingBackGround();
             backGround.Load(spriteBatch, gameContent);
@@ -88,9 +79,12 @@ namespace EchoProtype
 
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, spriteBatch, gameContent);//Change
+
             consumable = new Consumable(500, 300, 5, Consumable.Type.Health, gameContent, player); //example change
 
 
+            soundEffects.Add(Content.Load<SoundEffect>("wings"));
+            soundEffects.Add(Content.Load<SoundEffect>("hit01"));
         }
 
         void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
@@ -100,20 +94,10 @@ namespace EchoProtype
             MediaPlayer.Play(gameContent.songbg);
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
             backGround.Update(gameTime);
@@ -128,7 +112,6 @@ namespace EchoProtype
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
             KeyboardState newKeyboardState = Keyboard.GetState();
             MouseState newMouseState = Mouse.GetState();
 
@@ -176,6 +159,7 @@ namespace EchoProtype
                         damageTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;//change
                         player.canTakeDamage = false;
                         player.Hurt(true);
+                        soundEffects[1].CreateInstance().Play();
                     }
 
 
@@ -219,6 +203,7 @@ namespace EchoProtype
             {
 
                 player.Visible = false;
+                this.time.flag = true;
                 gameOver = true;
             }
             oldMouseState = newMouseState; // this saves the old state      
@@ -228,9 +213,6 @@ namespace EchoProtype
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
@@ -240,7 +222,10 @@ namespace EchoProtype
             //Title Screen
             if (!gameStart)
             {
+                time.flytime = gameTime.TotalGameTime.Seconds;
+
                 spriteBatch.Begin();
+
                 titleScreen.Draw();
 
                 spriteBatch.End();
@@ -248,6 +233,7 @@ namespace EchoProtype
             else if (gameOver)
             {
                 spriteBatch.Begin();
+
                 gameOverScreen.Draw();
 
                 spriteBatch.End();
@@ -266,7 +252,10 @@ namespace EchoProtype
                 spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
                 consumable.Draw(spriteBatch);
+
                 backGround.Draw();
+
+                time.Draw(gameTime);
 
                 spriteBatch.End();
             }

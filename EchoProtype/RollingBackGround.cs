@@ -38,7 +38,7 @@ namespace EchoProtype
             public void Load(SpriteBatch spriteBatch, GameContent content)
             {
                 this.spriteBatch = spriteBatch;
-                backgroundTexture = content.backgroundTexture;
+                backgroundTexture = content.foregroundTexture;
                 windowSize = spriteBatch.GraphicsDevice.PresentationParameters.Bounds.Size;
             }
 

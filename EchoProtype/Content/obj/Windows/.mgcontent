@@ -14,11 +14,6 @@
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/BrickSound.wav</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Title.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echoAmb.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/cave temp.jpg</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat01.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat02.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat03.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat04.gif</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bgsound.mp3</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black01.png</File>
@@ -28,7 +23,6 @@
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Maze1.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/snake01.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/sightBlocker.jpg</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/newCaveBackground.jpg</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/vertbrick.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/FG.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle 5.png</File>
@@ -39,5 +33,12 @@
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/powerupfirefly.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/powerupfruit.png</File>
     <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/gameoverscreen.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat01.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat02.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat03.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat04.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/redheart.png</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/wings.mp3</File>
+    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/hit01.mp3</File>
   </SourceFiles>
 </SourceFileCollection>
