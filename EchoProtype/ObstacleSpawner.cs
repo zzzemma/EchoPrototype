@@ -89,12 +89,22 @@ namespace EchoProtype
         public void Spawn(GameTime gameTime, bool gameStart)
         {
             if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length && gameStart)
-            {
-                Console.WriteLine("Create Success on: " + spawnTimer);
+            {              
                 obstacles[counter].Visible = true;
                 counter++;
                 deltaTime = rand.Next(minTime, maxTime);
                 spawnTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            if (counter == obstacles.Length & obstacles[obstacles.Length - 1].Visible == false) //change
+            {
+                for (int i = 0; i < obstacles.Length; i++)
+                {
+                    obstacles[i].X = rand.Next(minX, maxX);
+                    obstacles[i].Y = rand.Next(minY, maxY);
+                }
+                speed += 1;
+                counter = 0;
             }
         }
     }

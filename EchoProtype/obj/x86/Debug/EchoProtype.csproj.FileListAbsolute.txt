@@ -139,3 +139,11 @@ C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\obj\x86\Debug\EchoProtype.csproj.CopyComplete
 C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\FG.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\gameoverscreen.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\obstacle 5.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\obstacle1.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\obstacle2.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\obstacle3.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\obstacle4.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\powerupfirefly.xnb
+C:\Users\u0764291\echo\EchoPrototype-TempVersion0826\EchoProtype\bin\Windows\x86\Debug\Content\powerupfruit.xnb

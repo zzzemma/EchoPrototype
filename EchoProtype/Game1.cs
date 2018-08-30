@@ -14,8 +14,9 @@ namespace EchoProtype
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameContent gameContent;
-        private Player player;
+        private Player player; //change
         private TitleScreen titleScreen;
+        private EndingScreen gameOverScreen;
         private RollingBackGround backGround;
         private float damageTimer;
         private float delayTime;
@@ -24,7 +25,9 @@ namespace EchoProtype
         private MouseState oldMouseState;
         private KeyboardState oldKeyboardState;
         private bool gameStart;
+        private bool gameOver;
         private ObstacleSpawner obstacleSpawner;
+        private Consumable consumable;
 
         public Game1()
         {
@@ -42,8 +45,9 @@ namespace EchoProtype
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            delayTime = 1; // delay inbetween taking damage
+            delayTime = 750; // delay inbetween taking damage change
             gameStart = false;
+            gameOver = false;
             base.Initialize();
         }
 
@@ -72,8 +76,9 @@ namespace EchoProtype
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.ApplyChanges();
 
-            player = new Player(200.0f,350.0f,screenWidth, spriteBatch, gameContent);
+            player = new Player(200.0f,350.0f,screenWidth,screenHeight, spriteBatch, gameContent);
             titleScreen = new TitleScreen(screenWidth, screenHeight, spriteBatch,gameContent);
+            gameOverScreen = new EndingScreen(screenWidth, screenHeight, spriteBatch, gameContent); //change
             backGround = new RollingBackGround();
             backGround.Load(spriteBatch, gameContent);
 
@@ -82,7 +87,8 @@ namespace EchoProtype
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            obstacleSpawner = new ObstacleSpawner(150, screenWidth, screenWidth - 100, screenHeight - 100, 100, 750, 250, 9, spriteBatch, gameContent);
+            obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, spriteBatch, gameContent);//Change
+            //consumable = new Consumable(500, 300, Consumable.Type.Health, gameContent, player); example change
 
 
         }
@@ -112,6 +118,7 @@ namespace EchoProtype
         {
             backGround.Update(gameTime);
             player.Update(gameTime);
+            consumable.Update(gameTime);//change
 
             if (IsActive == false)
             {
@@ -151,11 +158,11 @@ namespace EchoProtype
                 }
                 else
                 {
-                  //pause?
+                  //pause? 
                 }
             }
 
-            player.playerRect = new Rectangle((int)player.X, (int)player.Y, (int)(player.Width + player.Width*.5), (int)(player.Height + player.Height*.5));//keeps track of player position
+            player.playerRect = new Rectangle((int)player.X, (int)player.Y, (int)player.Width, (int)player.Height);//keeps track of player position change
 
             //checks for collisions
             for (int i = 0; i < obstacleSpawner.obstacles.Length; i++)
@@ -166,8 +173,9 @@ namespace EchoProtype
                     if (player.canTakeDamage)
                     {
                         player.Health -= obstacleSpawner.obstacles[i].damage;
-                        damageTimer = (float)gameTime.TotalGameTime.TotalSeconds;
+                        damageTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;//change
                         player.canTakeDamage = false;
+                        player.Hurt(true);
                     }
 
 
@@ -176,9 +184,11 @@ namespace EchoProtype
                     {
                         player.MoveRight();
                         player.MoveRight();
+                        player.MoveRight();
                     }
                     if (newKeyboardState.IsKeyDown(Keys.Up))
                     {
+                        player.MoveLeft();
                         player.MoveLeft();
                         player.MoveLeft();
                         player.MoveDown();
@@ -187,24 +197,29 @@ namespace EchoProtype
                     {
                         player.MoveLeft();
                         player.MoveLeft();
+                        player.MoveLeft();
                         player.MoveUp();
                     }
                     else
                     {
                         player.MoveLeft();
                         player.MoveLeft();
+                        player.MoveLeft();
                     }
                 }
             }
 
-            if(gameTime.TotalGameTime.TotalSeconds >= damageTimer + delayTime)
+            if(gameTime.TotalGameTime.TotalMilliseconds >= damageTimer + delayTime)//change
             {
                 player.canTakeDamage = true;
+                player.Hurt(false);
             }
 
-            if(player.Health <= 0 && player.Visible)
+            if(player.Health <= 0 && player.Visible || player.X <= -50) //change
             {
+
                 player.Visible = false;
+                gameOver = true;
             }
             oldMouseState = newMouseState; // this saves the old state      
             oldKeyboardState = newKeyboardState;
@@ -230,6 +245,13 @@ namespace EchoProtype
 
                 spriteBatch.End();
             }
+            else if (gameOver)
+            {
+                spriteBatch.Begin();
+                gameOverScreen.Draw();
+
+                spriteBatch.End();
+            }
             else
             {
 
@@ -243,6 +265,7 @@ namespace EchoProtype
 
                 spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
+                consumable.Draw(spriteBatch);
                 backGround.Draw();
 
                 spriteBatch.End();

@@ -18,6 +18,7 @@ namespace EchoProtype
         public float Width { get; set; } //width of paddle
         public float Height { get; set; } //height of paddle
         public float ScreenWidth { get; set; } //width of game screen
+        public float ScreenHeight { get; set; } 
 
         public int Health { get; set; }//health
         public Rectangle playerRect { get; set; }
@@ -38,15 +39,21 @@ namespace EchoProtype
         private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
         public bool canTakeDamage = true;
 
+        private Color batColor { get; set; }//change
 
-        public Player(float x, float y, float screenWidth, SpriteBatch spriteBatch, GameContent gameContent)
+        private bool hurt;
+
+
+        public Player(float x, float y, float screenWidth, float screenHeight, SpriteBatch spriteBatch, GameContent gameContent)
         {
+            //:'(
             Visible = true;
             X = x;
             Y = y;
-            Health = 50;
+            Width = 4;//change
+            Height = 2;
+            Health = 5;
 
-            //imgPlayer = gameContent.imgBall;
 
             _batImages = gameContent.batList;
             _currentBatIndex = 0;
@@ -59,11 +66,9 @@ namespace EchoProtype
 
             _rotationAngle = 0;
 
-            //Width = imgPlayer.Width;
-            //Height = imgPlayer.Height;
-
             this.spriteBatch = spriteBatch;
-            ScreenWidth = screenWidth;          
+            ScreenWidth = screenWidth;
+            ScreenHeight = screenHeight;
             
         }
 
@@ -105,7 +110,7 @@ namespace EchoProtype
                 spriteBatch.Draw(_sightBlocker,
                     sightDestinationRec,
                     null,
-                    Color.White,
+                    batColor,
                     _rotationAngle,
                     new Vector2(_sightImageSize.X / 2 + sightOffset.X, _sightImageSize.Y / 2 + sightOffset.Y),
                     SpriteEffects.None,
@@ -115,17 +120,26 @@ namespace EchoProtype
                 spriteBatch.End();
 
                 spriteBatch.Begin();
+                //change
+                if (!hurt)
+                {
+                    batColor = Color.White;
+                }
+                else
+                {
+                    batColor = Color.Red;
+                }
 
                 spriteBatch.Draw(_batImages[_currentBatIndex],
                     batDestinationRec,
                     null,
-                    Color.White,
+                    batColor,
                     _rotationAngle,
                     new Vector2(_batImageSize.X / 2, _batImageSize.Y / 2),
                     SpriteEffects.None,
                     0f
                     );
-
+                //change
                 spriteBatch.End();
             }
         }
@@ -133,22 +147,46 @@ namespace EchoProtype
         public void MoveLeft()
         {
             X = X - 5;
+
         }
         public void MoveUp()
         {
             Y = Y - 5;
+            //change
+            if(Y < 20)
+            {
+                Y = 20;
+            }
             //_rotationAngle -= 0.1f;
             _rotationAngle = Math.Max(_rotationAngle, -MathHelper.Pi / 2);
         }
         public void MoveDown()
         {
+            //change
             Y = Y + 5;
+
+            if (Y > ScreenHeight - 20)
+            {
+                Y = ScreenHeight - 20;
+            }
             //_rotationangle += 0.1f;
             _rotationAngle = Math.Min(_rotationAngle, MathHelper.Pi / 2);
         }
         public void MoveRight()
         {
+            //change
             X = X + 5;
+
+            if (X > ScreenWidth - 50)
+            {
+                X = ScreenWidth - 50;
+            }
+        }
+
+        //change
+        public void Hurt(bool hurt)
+        {
+            this.hurt = hurt;
         }
     }
 }

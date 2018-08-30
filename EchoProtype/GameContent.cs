@@ -15,6 +15,9 @@ namespace EchoProtype
     {
         public Texture2D imgBrick { get; set; }
         public Texture2D imgTitle { get; set; }
+        public Texture2D imgGameOver { get; set; }
+        public Texture2D imgPlusFruit { get; set; }
+        public Texture2D imgFireFly { get; set; }
         public SpriteFont labelFont { get; set; }
         public Texture2D imgBall { get; set; }
         public SoundEffect echoAmb { get; set; }
@@ -36,6 +39,9 @@ namespace EchoProtype
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
             imgTitle = Content.Load<Texture2D>("Title");
+            imgFireFly = Content.Load<Texture2D>("powerupfirefly");
+            imgGameOver = Content.Load<Texture2D>("gameoverscreen");
+            imgPlusFruit = Content.Load<Texture2D>("powerupfruit");
             backgroundTexture = Content.Load<Texture2D>("FG");
             blacksmall = Content.Load<Texture2D>("black");
             imgStag = Content.Load<Texture2D>("vertbrick");

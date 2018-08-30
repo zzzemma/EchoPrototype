@@ -29,7 +29,7 @@ namespace EchoProtype
         {
             X = x;
             Y = y;
-            damage = 10;
+            damage = 1;//change
             imgStag = gameContent.imgStag;
             Width = imgStag.Width;
             Height = imgStag.Height;
