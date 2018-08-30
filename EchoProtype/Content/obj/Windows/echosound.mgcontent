@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echosound.mp3</SourceFile>
-  <SourceTime>2018-08-26T18:58:50-06:00</SourceTime>
-  <DestFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/echosound.xnb</DestFile>
-  <DestTime>2018-08-29T18:28:04.2716396-06:00</DestTime>
+  <SourceFile>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/echosound.mp3</SourceFile>
+  <SourceTime>2018-08-29T19:58:35-06:00</SourceTime>
+  <DestFile>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bin/Windows/echosound.xnb</DestFile>
+  <DestTime>2018-08-29T23:30:53.6346134-06:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/echosound.wma</string>
+    <string>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bin/Windows/echosound.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

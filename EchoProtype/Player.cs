@@ -31,10 +31,15 @@ namespace EchoProtype
         private Texture2D _sightBlocker { get; set; }
         private Point _sightImageSize { get; set; }
 
+        private Texture2D _heartpic { get; set; }
+
+        private Point _heartImageSize { get; set; }
+
         private float _imageChangeSpan = 0.1f;
         private float _lastChangeTime { get; set; }
 
         private float _rotationAngle { get; set; }
+        private Game1 game { get; set; }
 
         private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
         public bool canTakeDamage = true;
@@ -43,10 +48,12 @@ namespace EchoProtype
 
         private bool hurt;
 
+        Stack<Rectangle> locations = new Stack<Rectangle>();
 
-        public Player(float x, float y, float screenWidth, float screenHeight, SpriteBatch spriteBatch, GameContent gameContent)
+        public Player(float x, float y, float screenWidth, float screenHeight, SpriteBatch spriteBatch, GameContent gameContent, Game1 game)
         {
             //:'(
+            this.game = game;
             Visible = true;
             X = x;
             Y = y;
@@ -62,6 +69,9 @@ namespace EchoProtype
             _sightBlocker = gameContent.blacksmall;
             _sightImageSize = new Point(_sightBlocker.Width, _sightBlocker.Height);
 
+            _heartpic = gameContent.redheart;
+            _heartImageSize = new Point(_heartpic.Width, _heartpic.Height);
+
             _lastChangeTime = 0;
 
             _rotationAngle = 0;
@@ -69,18 +79,31 @@ namespace EchoProtype
             this.spriteBatch = spriteBatch;
             ScreenWidth = screenWidth;
             ScreenHeight = screenHeight;
-            
+        }
+
+        public void AddLocations(int n)
+        {
+            Rectangle currentrec = locations.Pop();
+            if (Health == 0)
+            {
+                return;
+            }
+            locations.Push(currentrec);
+            for (int i = 1; i < n; i++)
+            {
+                locations.Push(new Rectangle(currentrec.X + 20 * i, currentrec.Y, currentrec.Width, currentrec.Height));
+            }
         }
 
         public void Update(GameTime gameTime)
         {
             var currentTime = (float)gameTime.TotalGameTime.TotalMilliseconds;
             currentTime /= 1000;
-            //Console.WriteLine("Player, currentTime: " + currentTime);
+
             if(currentTime - _lastChangeTime > _imageChangeSpan)
             {
                 _currentBatIndex = (_currentBatIndex + 1) % 4;
-                //Console.WriteLine(_currentBatIndex);
+
                 _lastChangeTime = currentTime;
             }
         }
@@ -102,8 +125,17 @@ namespace EchoProtype
                 var sightDestinationRec = new Rectangle();
                 sightDestinationRec.X = (int)this.X;
                 sightDestinationRec.Y = (int)this.Y;
-                //Console.WriteLine("Sight position: " + sightDestinationRec.X + " " + sightDestinationRec.Y);
+
                 sightDestinationRec.Size = sightSize;
+
+                var heartDestinationRec = new Rectangle();
+                var heartSize = new Point(100, 100);
+                heartDestinationRec.X = (int)batDestinationRec.X;
+                heartDestinationRec.Y = (int)batDestinationRec.Y - 80;
+                heartDestinationRec.Width = 20;
+                heartDestinationRec.Height = 20;
+                locations.Push(heartDestinationRec);
+                this.AddLocations(this.Health);
 
                 spriteBatch.Begin();
 
@@ -119,8 +151,12 @@ namespace EchoProtype
 
                 spriteBatch.End();
 
+                if (_currentBatIndex == 1)
+                {
+                    this.game.soundEffects[0].CreateInstance().Play();
+                }
+
                 spriteBatch.Begin();
-                //change
                 if (!hurt)
                 {
                     batColor = Color.White;
@@ -141,6 +177,22 @@ namespace EchoProtype
                     );
                 //change
                 spriteBatch.End();
+
+                spriteBatch.Begin();
+                foreach (Rectangle rec in locations)
+                {
+                    spriteBatch.Draw(_heartpic,
+                        rec,
+                        null,
+                        Color.Red,
+                        _rotationAngle,
+                        new Vector2(_heartImageSize.X / 2, _heartImageSize.Y / 2),
+                        SpriteEffects.None,
+                        0f
+                        );
+                }
+                spriteBatch.End();
+                this.locations = new Stack<Rectangle>();
             }
         }
 

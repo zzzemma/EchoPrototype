@@ -4,40 +4,41 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/ball.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/brick.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/MissSound.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/PaddleBounceSound.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/StartSound.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/WallBounceSound.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Arial20.spritefont</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/BrickSound.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Title.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echoAmb.wav</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/cave temp.jpg</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat01.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat02.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat03.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bat04.gif</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bgsound.mp3</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black01.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black02.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black03.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/echosound.mp3</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/Maze1.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/snake01.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/sightBlocker.jpg</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/newCaveBackground.jpg</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/vertbrick.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/FG.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle 5.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle1.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle2.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle3.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle4.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/powerupfirefly.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/powerupfruit.png</File>
-    <File>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/gameoverscreen.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/ball.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/brick.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/MissSound.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/PaddleBounceSound.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/StartSound.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/WallBounceSound.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/Arial20.spritefont</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/BrickSound.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/Title.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/echoAmb.wav</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bgsound.mp3</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/black.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/black01.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/black02.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/black03.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/echosound.mp3</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/Maze1.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/snake01.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/sightBlocker.jpg</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/vertbrick.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/FG.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/obstacle 5.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/obstacle1.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/obstacle2.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/obstacle3.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/obstacle4.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/powerupfirefly.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/powerupfruit.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/gameoverscreen.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bat01.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bat02.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bat03.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bat04.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/redheart.png</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/wings.mp3</File>
+    <File>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/hit01.mp3</File>
   </SourceFiles>
 </SourceFileCollection>

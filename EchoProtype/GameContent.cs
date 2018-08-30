@@ -19,13 +19,12 @@ namespace EchoProtype
         public Texture2D imgPlusFruit { get; set; }
         public Texture2D imgFireFly { get; set; }
         public SpriteFont labelFont { get; set; }
-        public Texture2D imgBall { get; set; }
         public SoundEffect echoAmb { get; set; }
 
-        public Texture2D backgroundTexture { get; set; }
+        public Texture2D foregroundTexture { get; set; }
    
         public Texture2D blacksmall { get; set; }
-
+        public Texture2D redheart { get; set; }
         public List<Texture2D> blackEchoList { get; set; }
 
         public List<Texture2D> batList { get; set; }
@@ -35,15 +34,15 @@ namespace EchoProtype
         public GameContent(ContentManager Content)
         {
             echoAmb = Content.Load<SoundEffect>("echoAmb");
-            imgBall = Content.Load<Texture2D>("Ball");
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
             imgTitle = Content.Load<Texture2D>("Title");
             imgFireFly = Content.Load<Texture2D>("powerupfirefly");
             imgGameOver = Content.Load<Texture2D>("gameoverscreen");
             imgPlusFruit = Content.Load<Texture2D>("powerupfruit");
-            backgroundTexture = Content.Load<Texture2D>("FG");
+            foregroundTexture = Content.Load<Texture2D>("FG");
             blacksmall = Content.Load<Texture2D>("black");
+            redheart = Content.Load<Texture2D>("redheart");
             imgStag = Content.Load<Texture2D>("vertbrick");
             songbg = Content.Load<Song>("bgsound");
 
@@ -53,7 +52,6 @@ namespace EchoProtype
                 var index = i + 1;
                 var currentEcho = Content.Load<Texture2D>("black0" + index);
                 blackEchoList.Add(currentEcho);
-                Console.WriteLine("Load Texture: black0" + index);
             }
 
             batList = new List<Texture2D>();
@@ -62,7 +60,6 @@ namespace EchoProtype
                 var index = i + 1;
                 var currentBat = Content.Load<Texture2D>("bat0" + index);
                 batList.Add(currentBat);
-                Console.WriteLine("Load Texture: bat0" + index);
             }
         }
     }

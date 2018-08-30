@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/black01.png</SourceFile>
-  <SourceTime>2018-08-26T18:58:50-06:00</SourceTime>
-  <DestFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/black01.xnb</DestFile>
-  <DestTime>2018-08-29T18:28:03.4614839-06:00</DestTime>
+  <SourceFile>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/black01.png</SourceFile>
+  <SourceTime>2018-08-29T19:58:35-06:00</SourceTime>
+  <DestFile>G:/Download/default/EchoPrototype-luis/EchoProtype/Content/bin/Windows/black01.xnb</DestFile>
+  <DestTime>2018-08-29T23:30:51.9132463-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
