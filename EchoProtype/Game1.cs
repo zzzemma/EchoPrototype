@@ -88,7 +88,7 @@ namespace EchoProtype
 
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, spriteBatch, gameContent);//Change
-            consumable = new Consumable(500, 300, Consumable.Type.Health, gameContent, player); //example change
+            consumable = new Consumable(500, 300, 5, Consumable.Type.Health, gameContent, player); //example change
 
 
         }

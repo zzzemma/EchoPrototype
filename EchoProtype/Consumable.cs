@@ -18,6 +18,7 @@ namespace EchoProtype
         public bool Visible;
         public float X;
         public float Y;
+        private int speed;
         private float deltaY;
         private float maxY;
         private float minY;
@@ -32,7 +33,7 @@ namespace EchoProtype
             Health = 0, AddPoints = 1, MinusPoints = 2 
         }
 
-          public Consumable(int x, int y, Type type, GameContent gameContent, Player player) //, ScoreManager scoreManager)
+          public Consumable(int x, int y,int speed, Type type, GameContent gameContent, Player player) //, ScoreManager scoreManager)
         {
             switch(type)
             {
@@ -48,7 +49,7 @@ namespace EchoProtype
                         
                         imgConsumable = gameContent.imgFireFly;
                         Points = true;
-                        numPoints = 10;
+                        numPoints = 1000;
                         break;
                     }
                 case Type.MinusPoints:
@@ -63,6 +64,7 @@ namespace EchoProtype
             this.player = player;
             X = x;
             Y = y;
+            this.speed = speed;
             minY = Y + 10;
             maxY = Y - 10;
             deltaY = maxY;
@@ -96,8 +98,9 @@ namespace EchoProtype
             {
                 if(Points)
                 {
-                    //scoreManager.AddPoints(points);
                     Visible = false;
+                    //scoreManager.AddPoints(points);
+
                 }
 
                 if(Health)
@@ -106,6 +109,9 @@ namespace EchoProtype
                     Visible = false;
                 }
             }
+
+            X -= speed;
+            consumableRect.X = (int) X;
 
             Sway();
         }
