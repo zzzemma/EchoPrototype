@@ -38,14 +38,15 @@ namespace EchoProtype
             {
                 case Type.Health:
                     {
-                        imgConsumable = gameContent.imgFireFly;
+                        imgConsumable = gameContent.imgPlusFruit;
                         Health = true;                     
                         break;
                     }
 
                 case Type.AddPoints:
                     {
-                        imgConsumable = gameContent.imgPlusFruit;
+                        
+                        imgConsumable = gameContent.imgFireFly;
                         Points = true;
                         numPoints = 10;
                         break;
@@ -53,8 +54,8 @@ namespace EchoProtype
                 case Type.MinusPoints:
                     {
                         //imgConsumable = gameContent.imgMinusFruit;
-                        Points = true;
-                        numPoints = -10;
+                        //Points = true;
+                        //numPoints = -10;
                         break;
                     }
             }
