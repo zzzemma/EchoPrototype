@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/BrickSound.wav</SourceFile>
   <SourceTime>2018-08-26T18:58:50-06:00</SourceTime>
   <DestFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/BrickSound.xnb</DestFile>
-  <DestTime>2018-08-30T09:17:23.1464175-06:00</DestTime>
+  <DestTime>2018-08-30T09:42:51.6602033-06:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

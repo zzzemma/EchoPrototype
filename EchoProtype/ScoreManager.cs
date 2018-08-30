@@ -18,6 +18,7 @@ namespace EchoProtype
         public int flytime;
         private int currenttime;
         public bool flag = false;
+        private int extraPoints;
         public Scoremanager(int screenWidth, int screenHeight, SpriteBatch spriteBatch, GameContent gameContent)
         {
             this.spriteBatch = spriteBatch;
@@ -31,7 +32,7 @@ namespace EchoProtype
             string scoreMsg = "Score : ";
             if (!flag)
             {
-                currenttime = gameTime.TotalGameTime.Seconds - flytime;
+                currenttime = gameTime.TotalGameTime.Seconds - flytime + extraPoints;
             }
             scoreMsg += currenttime;
             Vector2 stringSpace = gameContent.labelFont.MeasureString(scoreMsg);
@@ -40,7 +41,12 @@ namespace EchoProtype
 
         public void AddPoints(int points)
         {
-            currenttime += points;
+            extraPoints += points;
+        }
+
+        public void SubtractPoints(int points)
+        {
+            extraPoints -= points;
         }
     }
 }

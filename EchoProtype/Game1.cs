@@ -29,6 +29,7 @@ namespace EchoProtype
         private Scoremanager time;
         public List<SoundEffect> soundEffects;
         private Consumable consumable;
+        private Game game;
 
         public Game1()
         {
@@ -80,7 +81,7 @@ namespace EchoProtype
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, spriteBatch, gameContent);//Change
 
-            consumable = new Consumable(500, 300, 5, Consumable.Type.Health, gameContent, player); //example change
+            consumable = new Consumable(800, 300, 5, Consumable.Type.AddPoints, gameContent, player, time); //example change
 
 
             soundEffects.Add(Content.Load<SoundEffect>("wings"));
@@ -142,6 +143,13 @@ namespace EchoProtype
                 else
                 {
                   //pause? 
+                }
+
+                if(gameOver)
+                {
+                    game = new Game1();
+                    game.Run();
+                    this.Exit();
                 }
             }
 

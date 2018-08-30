@@ -25,6 +25,7 @@ namespace EchoProtype
         private Texture2D imgConsumable;
         private Player player;
         private Rectangle consumableRect;
+        private Scoremanager scoreManager;
         private int numPoints;
         private Random rand;
 
@@ -33,7 +34,7 @@ namespace EchoProtype
             Health = 0, AddPoints = 1, MinusPoints = 2 
         }
 
-          public Consumable(int x, int y,int speed, Type type, GameContent gameContent, Player player) //, ScoreManager scoreManager)
+          public Consumable(int x, int y,int speed, Type type, GameContent gameContent, Player player, Scoremanager scoreManager)
         {
             switch(type)
             {
@@ -69,6 +70,7 @@ namespace EchoProtype
             maxY = Y - 10;
             deltaY = maxY;
             Visible = true;
+            this.scoreManager = scoreManager;
             consumableRect = new Rectangle((int)X,(int)Y,imgConsumable.Width/2,imgConsumable.Height/2);
         }
 
@@ -98,8 +100,8 @@ namespace EchoProtype
             {
                 if(Points)
                 {
-                    Visible = false;
-                    //scoreManager.AddPoints(points);
+                    scoreManager.AddPoints(numPoints);
+                    Visible = false;                   
 
                 }
 
@@ -114,6 +116,11 @@ namespace EchoProtype
             consumableRect.X = (int) X;
 
             Sway();
+
+            if(X <= -50)
+            {
+                Visible = false;
+            }
         }
 
         public void Sway()
