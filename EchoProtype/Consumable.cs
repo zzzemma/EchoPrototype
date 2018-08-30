@@ -15,7 +15,7 @@ namespace EchoProtype
 
         private bool Points = false;
         private bool Health = false;
-        public bool Visible;
+        public bool Destroyed;
         public float X;
         public float Y;
         private int speed;
@@ -69,14 +69,14 @@ namespace EchoProtype
             minY = Y + 10;
             maxY = Y - 10;
             deltaY = maxY;
-            Visible = true;
+            Destroyed = true;
             this.scoreManager = scoreManager;
             consumableRect = new Rectangle((int)X,(int)Y,imgConsumable.Width/2,imgConsumable.Height/2);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (Visible)
+            if (Destroyed)
             {
                 spriteBatch.Draw(imgConsumable, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), .50f, SpriteEffects.None, 0);
             }
@@ -96,19 +96,19 @@ namespace EchoProtype
 
         public void Update(GameTime gameTime)
         {
-            if (HitTest(player.playerRect, consumableRect) && Visible)
+            if (HitTest(player.playerRect, consumableRect) && Destroyed)
             {
                 if(Points)
                 {
                     scoreManager.AddPoints(numPoints);
-                    Visible = false;                   
+                    Destroyed = false;                   
 
                 }
 
                 if(Health)
                 {
                     player.Health += 1;
-                    Visible = false;
+                    Destroyed = false;
                 }
             }
 
@@ -119,7 +119,7 @@ namespace EchoProtype
 
             if(X <= -50)
             {
-                Visible = false;
+                Destroyed = false;
             }
         }
 

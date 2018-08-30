@@ -53,7 +53,7 @@ namespace EchoProtype
         {          
             for (int i = 0; i < obstacles.Length; i++)
             {
-                if(obstacles[i].Visible)
+                if(obstacles[i].Destoyed)
                 {
                     obstacles[i].Draw();
                 }
@@ -66,7 +66,7 @@ namespace EchoProtype
         {
             for(int i = 0; i < obstacles.Length; i++)
             {
-                if (obstacles[i].Visible)
+                if (obstacles[i].Destoyed)
                 {
                     obstacles[i].X -= speed;
                     obstacles[i].hitBox = new Rectangle((int)(obstacles[i].X - speed), (int)obstacles[i].Y, obstacles[i].hitBox.Width, obstacles[i].hitBox.Height);
@@ -78,9 +78,9 @@ namespace EchoProtype
         {
             for (int i = 0; i < obstacles.Length; i++)
             {
-                if (obstacles[i].Visible && obstacles[i].X < -50)
+                if (obstacles[i].Destoyed && obstacles[i].X < -50)
                 {
-                    obstacles[i].Visible = false;                  
+                    obstacles[i].Destoyed = false;                  
                 }
             }
 
@@ -90,13 +90,13 @@ namespace EchoProtype
         {
             if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length && gameStart)
             {              
-                obstacles[counter].Visible = true;
+                obstacles[counter].Destoyed = true;
                 counter++;
                 deltaTime = rand.Next(minTime, maxTime);
                 spawnTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
             }
 
-            if (counter == obstacles.Length & obstacles[obstacles.Length - 1].Visible == false) //change
+            if (counter == obstacles.Length & obstacles[obstacles.Length - 1].Destoyed == false) //change
             {
                 for (int i = 0; i < obstacles.Length; i++)
                 {

@@ -22,7 +22,7 @@ namespace EchoProtype
 
         public int Health { get; set; }//health
         public Rectangle playerRect { get; set; }
-        public bool Visible { get; set; }
+        public bool Destroyed { get; set; }
 
         //private Texture2D imgPlayer { get; set; }  //cached image of the paddle
         private List<Texture2D> _batImages { get; set; }
@@ -54,7 +54,7 @@ namespace EchoProtype
         {
             //:'(
             this.game = game;
-            Visible = true;
+            Destroyed = true;
             X = x;
             Y = y;
             Width = 4;//change
@@ -110,7 +110,7 @@ namespace EchoProtype
 
         public void Draw()
         {
-            if (Visible)
+            if (Destroyed)
             {
                 var batDestinationRec = new Rectangle();
                 var batSize = new Point(100, 100);

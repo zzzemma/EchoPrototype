@@ -17,7 +17,7 @@ namespace EchoProtype
         public float Y { get; set; } //y position of brick on screen
         public float Width { get; set; } //width of brick
         public float Height { get; set; } //height of brick
-        public bool Visible { get; set; } //does brick still exist?
+        public bool Destoyed { get; set; } //does brick still exist?
         public Rectangle hitBox { get; set; }
 
         public int damage { get; set; }
@@ -35,12 +35,12 @@ namespace EchoProtype
             Height = imgStag.Height;
             this.spriteBatch = spriteBatch;
             hitBox = new Rectangle((int)X, (int)Y, (int)(Width + (Width * 0.60)), (int)(Height + Height * 0.60));// Rectangle for the wall collider
-            Visible = false;
+            Destoyed = false;
         }
 
         public void Draw()
         {
-            if (Visible)
+            if (Destoyed)
             {
                 spriteBatch.Draw(imgStag, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), 2.0f, SpriteEffects.None, 0);
             }

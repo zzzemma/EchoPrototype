@@ -29,6 +29,7 @@ namespace EchoProtype
         private Scoremanager time;
         public List<SoundEffect> soundEffects;
         private Consumable consumable;
+        private Consumable consumableHealth;
         private Game game;
 
         public Game1()
@@ -81,7 +82,8 @@ namespace EchoProtype
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, spriteBatch, gameContent);//Change
 
-            consumable = new Consumable(800, 300, 5, Consumable.Type.AddPoints, gameContent, player, time); //example change
+            consumable = new Consumable(1200, 300, 5, Consumable.Type.AddPoints, gameContent, player, time); //example change
+            consumableHealth = new Consumable(1000, 400, 3, Consumable.Type.Health, gameContent, player, time); //example change
 
 
             soundEffects.Add(Content.Load<SoundEffect>("wings"));
@@ -104,6 +106,7 @@ namespace EchoProtype
             backGround.Update(gameTime);
             player.Update(gameTime);
             consumable.Update(gameTime);//change
+            consumableHealth.Update(gameTime);
 
             if (IsActive == false)
             {
@@ -158,7 +161,7 @@ namespace EchoProtype
             //checks for collisions
             for (int i = 0; i < obstacleSpawner.obstacles.Length; i++)
             {
-                if(obstacleSpawner.obstacles[i].Visible && HitTest(player.playerRect, obstacleSpawner.obstacles[i].hitBox))
+                if(obstacleSpawner.obstacles[i].Destoyed && HitTest(player.playerRect, obstacleSpawner.obstacles[i].hitBox))
                 {
                     //makes player take damage
                     if (player.canTakeDamage)
@@ -207,10 +210,10 @@ namespace EchoProtype
                 player.Hurt(false);
             }
 
-            if(player.Health <= 0 && player.Visible || player.X <= -50) //change
+            if(player.Health <= 0 && player.Destroyed || player.X <= -50) //change
             {
 
-                player.Visible = false;
+                player.Destroyed = false;
                 this.time.flag = true;
                 gameOver = true;
             }
@@ -252,6 +255,7 @@ namespace EchoProtype
                 spriteBatch.Begin();
 
                 obstacleSpawner.Draw();
+                consumableHealth.Draw(spriteBatch);
 
                 spriteBatch.End();
 
