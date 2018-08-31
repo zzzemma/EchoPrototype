@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Consumable.cs" />
+    <Compile Include="EchoWave.cs" />
     <Compile Include="EndingScreen.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameContent.cs" />

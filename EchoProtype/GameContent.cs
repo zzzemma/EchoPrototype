@@ -11,8 +11,11 @@ using Microsoft.Xna.Framework.Media;
 
 namespace EchoProtype
 {
-    class GameContent
+    public class GameContent
     {
+        // singleton instance
+        public static GameContent instance;
+
         public Texture2D imgBrick { get; set; }
         public Texture2D imgTitle { get; set; }
         public Texture2D imgGameOver { get; set; }
@@ -33,6 +36,8 @@ namespace EchoProtype
 
         public GameContent(ContentManager Content)
         {
+            instance = this;
+
             echoAmb = Content.Load<SoundEffect>("echoAmb");
             labelFont = Content.Load<SpriteFont>("Arial20");
             imgBrick = Content.Load<Texture2D>("Brick");
