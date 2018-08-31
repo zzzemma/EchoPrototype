@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/obstacle4.png</SourceFile>
-  <SourceTime>2018-08-29T18:25:21.7375532-06:00</SourceTime>
-  <DestFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/obstacle4.xnb</DestFile>
-  <DestTime>2018-08-30T09:42:57.1311807-06:00</DestTime>
+  <SourceFile>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle4.png</SourceFile>
+  <SourceTime>2018-08-30T12:46:40.3231164-06:00</SourceTime>
+  <DestFile>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bin/Windows/obstacle4.xnb</DestFile>
+  <DestTime>2018-08-31T14:25:07.5528095-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

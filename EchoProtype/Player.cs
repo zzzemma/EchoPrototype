@@ -122,11 +122,11 @@ namespace EchoProtype
                 var sightOffset = new Point(-10, -30);
                 var sightSize = new Point(5000, 10000);
 
-                var sightDestinationRec = new Rectangle();
-                sightDestinationRec.X = (int)this.X;
-                sightDestinationRec.Y = (int)this.Y;
+                //var sightDestinationRec = new Rectangle();
+                //sightDestinationRec.X = (int)this.X;
+                //sightDestinationRec.Y = (int)this.Y;
 
-                sightDestinationRec.Size = sightSize;
+                //sightDestinationRec.Size = sightSize;
 
                 var heartDestinationRec = new Rectangle();
                 var heartSize = new Point(100, 100);
@@ -137,19 +137,19 @@ namespace EchoProtype
                 locations.Push(heartDestinationRec);
                 this.AddLocations(this.Health);
 
-                spriteBatch.Begin();
+                //spriteBatch.Begin();
 
-                spriteBatch.Draw(_sightBlocker,
-                    sightDestinationRec,
-                    null,
-                    batColor,
-                    _rotationAngle,
-                    new Vector2(_sightImageSize.X / 2 + sightOffset.X, _sightImageSize.Y / 2 + sightOffset.Y),
-                    SpriteEffects.None,
-                    0f
-                    );
+                //spriteBatch.Draw(_sightBlocker,
+                //    sightDestinationRec,
+                //    null,
+                //    batColor,
+                //    _rotationAngle,
+                //    new Vector2(_sightImageSize.X / 2 + sightOffset.X, _sightImageSize.Y / 2 + sightOffset.Y),
+                //    SpriteEffects.None,
+                //    0f
+                //    );
 
-                spriteBatch.End();
+                //spriteBatch.End();
 
                 if (_currentBatIndex == 1)
                 {
