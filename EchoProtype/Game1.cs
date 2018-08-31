@@ -116,10 +116,11 @@ namespace EchoProtype
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            #region keyboard control
             KeyboardState newKeyboardState = Keyboard.GetState();
             MouseState newMouseState = Mouse.GetState();
 
-            //process keyboard events                           
+            // moving control                 
             if (newKeyboardState.IsKeyDown(Keys.Left))
             {
                 player.MoveLeft();
@@ -155,6 +156,17 @@ namespace EchoProtype
                     this.Exit();
                 }
             }
+
+            // echowave control
+            if (newKeyboardState.IsKeyDown(Keys.Space))
+            {
+                if (gameStart && !gameOver)
+                {
+                    player.CreateEchoWave(gameTime);
+                }
+            }
+
+            #endregion
 
             player.playerRect = new Rectangle((int)player.X, (int)player.Y, (int)player.Width, (int)player.Height);//keeps track of player position change
 

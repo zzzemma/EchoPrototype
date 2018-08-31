@@ -40,15 +40,20 @@ namespace EchoProtype
 
         private float _rotationAngle { get; set; }
         private Game1 game { get; set; }
-
-        private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
-        public bool canTakeDamage = true;
-
         private Color batColor { get; set; }//change
 
         private bool hurt;
 
+        public bool canTakeDamage = true;
+
         Stack<Rectangle> locations = new Stack<Rectangle>();
+
+        public float echoCoolDown = 1f;
+        public float lastEchoTime { get; set; }
+        public List<EchoWave> echoWaves = new List<EchoWave>();
+        public List<EchoWave> removeList = new List<EchoWave>();
+
+        private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
 
         public Player(float x, float y, float screenWidth, float screenHeight, SpriteBatch spriteBatch, GameContent gameContent, Game1 game)
         {
@@ -75,6 +80,8 @@ namespace EchoProtype
             _lastChangeTime = 0;
 
             _rotationAngle = 0;
+
+            lastEchoTime = 0;
 
             this.spriteBatch = spriteBatch;
             ScreenWidth = screenWidth;
@@ -105,6 +112,17 @@ namespace EchoProtype
                 _currentBatIndex = (_currentBatIndex + 1) % 4;
 
                 _lastChangeTime = currentTime;
+            }
+
+            // update all echoWaves
+            removeList.Clear();
+            foreach(var e in echoWaves)
+            {
+                e.Update(gameTime);
+            }
+            foreach(var e in removeList)
+            {
+                echoWaves.Remove(e);
             }
         }
 
@@ -150,6 +168,11 @@ namespace EchoProtype
                 //    );
 
                 //spriteBatch.End();
+
+                foreach(var e in echoWaves)
+                {
+                    e.Draw();
+                }
 
                 if (_currentBatIndex == 1)
                 {
@@ -232,6 +255,19 @@ namespace EchoProtype
             if (X > ScreenWidth - 50)
             {
                 X = ScreenWidth - 50;
+            }
+        }
+
+        public void CreateEchoWave(GameTime gt)
+        {
+            var currentTime = (float)gt.TotalGameTime.TotalMilliseconds / 1000;
+            if(currentTime - lastEchoTime > echoCoolDown)
+            {
+                lastEchoTime = currentTime;
+                var echoWave = new EchoWave(gt, new Vector2(X,Y));
+                echoWaves.Add(echoWave);
+                echoWave.parent = this;
+                echoWave.spriteBatch = spriteBatch;
             }
         }
 
