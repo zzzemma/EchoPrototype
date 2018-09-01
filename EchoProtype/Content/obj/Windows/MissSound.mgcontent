@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/MissSound.wav</SourceFile>
-  <SourceTime>2018-08-30T12:46:38.9665743-06:00</SourceTime>
-  <DestFile>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bin/Windows/MissSound.xnb</DestFile>
-  <DestTime>2018-08-31T14:25:01.5447721-06:00</DestTime>
+  <SourceFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/MissSound.wav</SourceFile>
+  <SourceTime>2018-08-26T18:58:50-06:00</SourceTime>
+  <DestFile>C:/Users/u0764291/echo/EchoPrototype-TempVersion0826/EchoProtype/Content/bin/Windows/MissSound.xnb</DestFile>
+  <DestTime>2018-08-31T17:27:37.9825444-06:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
