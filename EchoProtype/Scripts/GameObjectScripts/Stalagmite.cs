@@ -19,7 +19,9 @@ namespace EchoProtype
         public float Height { get; set; } //height of brick
 
         private float damageTimer { get; set; }
-        private float delayTime { get; set; }
+        private float dmgDelayTime { get; set; }
+        private float visionTimer { get; set; }
+        private float visionDelayTime { get; set; }
 
         public float speed;
         public bool Destroyed { get; set; } //does brick still exist?
@@ -44,18 +46,20 @@ namespace EchoProtype
             imgStag = gameManager.gameContent.imgStag;
             Width = imgStag.Width;
             Height = imgStag.Height;
-            delayTime = 750;
+            dmgDelayTime = 750;
             damageTimer = 0;
+            visionDelayTime = 1000;
+            visionTimer = 0;
             this.spriteBatch = gameManager.spriteBatch;
             hitBox = new Rectangle((int)X, (int)Y, (int)(Width + (Width * 0.60)), (int)(Height + Height * 0.60));// Rectangle for the wall collider
             Destroyed = true;
-            Visible = true;
+            Visible = false;
             this.gameManager = gameManager;
         }
 
         public void Draw()
         {            
-            if (!Destroyed)
+            if (!Destroyed && Visible)
             {
                 spriteBatch.Draw(imgStag, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), 2.0f, SpriteEffects.None, 0);
             }
@@ -67,14 +71,14 @@ namespace EchoProtype
 
             KeyboardState newKeyboardState = Keyboard.GetState();
 
-            if (damageTimer > 0 && gameTime.TotalGameTime.TotalMilliseconds >= (damageTimer + delayTime))
+            if (damageTimer > 0 && gameTime.TotalGameTime.TotalMilliseconds >= (damageTimer + dmgDelayTime))
             {
                 player.hurt = false;
                 damageTimer = 0;
                 player.canTakeDamage = true;
             }
 
-            //checks for collisions          
+            //checks for collisions  against the player        
             if (!Destroyed && HitTest(player.playerRect, hitBox))
             {               
                 //makes player take damage
@@ -114,7 +118,19 @@ namespace EchoProtype
                     player.MoveLeft();
                     player.MoveLeft();
                 }
-            }                     
+            }
+
+            for (int i = 0; i < player.echoWaves.Count; i++)
+            {
+                for(int j = 0; j < player.echoWaves[i].collisionRectangles.Count;j++)
+                if (!Destroyed && HitTest(player.echoWaves[i].collisionRectangles[j], hitBox))
+                {
+                        visionTimer = (float) gameTime.TotalGameTime.TotalMilliseconds;
+                        Visible = true;
+                }
+            }
+
+            VisionCheck(gameTime);
         }
 
         private bool HitTest(Rectangle r1, Rectangle r2)
@@ -126,6 +142,17 @@ namespace EchoProtype
             else
             {
                 return false;
+            }
+        }
+
+        private void VisionCheck(GameTime gameTime)
+        {
+            if(Visible)
+            {
+                if(gameTime.TotalGameTime.TotalMilliseconds >= visionTimer + visionDelayTime)
+                {
+                    Visible = false;
+                }
             }
         }
 

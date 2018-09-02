@@ -30,6 +30,8 @@ namespace EchoProtype
         private SpriteBatch spriteBatch;
         private int numPoints;
         private Random rand;
+        private float visionTimer { get; set; }
+        private float visionDelayTime { get; set; }
 
         public enum Type
         {
@@ -38,6 +40,8 @@ namespace EchoProtype
 
         public Consumable(int x, int y, int speed, Type type, GameManager gameManager)
         {
+            visionDelayTime = 1000;
+            visionTimer = 0;
             Destroyed = false;
             Visible = false;
             switch (type)
@@ -83,7 +87,7 @@ namespace EchoProtype
 
         public void Draw()
         {
-            if (!Destroyed)
+            if (!Destroyed && Visible)
             {
                 spriteBatch.Draw(imgConsumable, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), .50f, SpriteEffects.None, 0);
             }
@@ -121,14 +125,38 @@ namespace EchoProtype
                 }
             }
 
+            //checks wave collisions
+            for (int i = 0; i < player.echoWaves.Count; i++)
+            {
+                for (int j = 0; j < player.echoWaves[i].collisionRectangles.Count; j++)
+                    if (!Destroyed && HitTest(player.echoWaves[i].collisionRectangles[j], consumableRect))
+                    {
+                        visionTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
+                        Visible = true;
+                    }
+            }
+
 
             Move();
             Sway();
+            VisionCheck(gameTime);
+
 
             if (X <= -50)
             {
                 Destroyed = true;
                 Visible = false;
+            }
+        }
+
+        private void VisionCheck(GameTime gameTime)
+        {
+            if (Visible && !Points)
+            {
+                if (gameTime.TotalGameTime.TotalMilliseconds >= visionTimer + visionDelayTime)
+                {
+                    Visible = false;
+                }
             }
         }
 

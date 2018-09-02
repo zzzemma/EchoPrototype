@@ -26,7 +26,7 @@ namespace EchoProtype
         Vector2 centerRecStart = new Vector2(20, 60);
         Vector2 topRecStart = new Vector2(20, 20);
         Vector2 bottomStart = new Vector2(20, 20);
-        List<Rectangle> collisionRectangles = new List<Rectangle>();
+        public List<Rectangle> collisionRectangles = new List<Rectangle>();
 
         // constructor
         public EchoWave(GameTime time, Vector2 pos)
