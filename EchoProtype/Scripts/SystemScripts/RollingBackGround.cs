@@ -17,7 +17,6 @@ namespace EchoProtype
             private Texture2D backgroundTexture;
             private SpriteBatch spriteBatch;
             private Point windowSize;
-            private float startTime;
             private float currentTime;
             private float rollSpeed = 5;
 
@@ -44,7 +43,6 @@ namespace EchoProtype
 
             public void Update(GameTime gameTime)
             {
-                //Console.WriteLine("gameTime: "+gameTime.TotalGameTime.TotalMilliseconds);
                 currentTime = (float)gameTime.TotalGameTime.TotalMilliseconds / 100;
             }
 

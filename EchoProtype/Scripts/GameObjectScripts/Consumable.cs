@@ -16,6 +16,7 @@ namespace EchoProtype
         private bool Points = false;
         private bool Health = false;
         public bool Destroyed;
+        public bool Visible;
         public float X;
         public float Y;
         private int speed;
@@ -26,30 +27,34 @@ namespace EchoProtype
         private Player player;
         private Rectangle consumableRect;
         private Scoremanager scoreManager;
+        private SpriteBatch spriteBatch;
         private int numPoints;
         private Random rand;
 
         public enum Type
         {
-            Health = 0, AddPoints = 1, MinusPoints = 2 
+            Health = 0, AddPoints = 1, MinusPoints = 2
         }
 
-          public Consumable(int x, int y,int speed, Type type, GameContent gameContent, Player player, Scoremanager scoreManager)
+        public Consumable(int x, int y, int speed, Type type, GameManager gameManager)
         {
-            switch(type)
+            Destroyed = false;
+            Visible = false;
+            switch (type)
             {
                 case Type.Health:
                     {
-                        imgConsumable = gameContent.imgPlusFruit;
-                        Health = true;                     
+                        imgConsumable = gameManager.gameContent.imgPlusFruit;
+                        Health = true;                       
                         break;
                     }
 
                 case Type.AddPoints:
                     {
-                        
-                        imgConsumable = gameContent.imgFireFly;
+
+                        imgConsumable = gameManager.gameContent.imgFireFly;
                         Points = true;
+                        Visible = true;
                         numPoints = 1000;
                         break;
                     }
@@ -62,21 +67,23 @@ namespace EchoProtype
                     }
             }
             rand = new Random();
-            this.player = player;
+            this.player = gameManager.player;
             X = x;
             Y = y;
             this.speed = speed;
             minY = Y + 10;
             maxY = Y - 10;
             deltaY = maxY;
-            Destroyed = true;
-            this.scoreManager = scoreManager;
-            consumableRect = new Rectangle((int)X,(int)Y,imgConsumable.Width/2,imgConsumable.Height/2);
+            Destroyed = false;
+            Visible = false;
+            this.scoreManager = gameManager.scoreManager;
+            this.spriteBatch = gameManager.spriteBatch;
+            consumableRect = new Rectangle((int)X, (int)Y, imgConsumable.Width / 2, imgConsumable.Height / 2);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            if (Destroyed)
+            if (!Destroyed)
             {
                 spriteBatch.Draw(imgConsumable, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), .50f, SpriteEffects.None, 0);
             }
@@ -96,30 +103,32 @@ namespace EchoProtype
 
         public void Update(GameTime gameTime)
         {
-            if (HitTest(player.playerRect, consumableRect) && Destroyed)
+            if (HitTest(player.playerRect, consumableRect) && !Destroyed)
             {
-                if(Points)
+                if (Points)
                 {
                     scoreManager.AddPoints(numPoints);
-                    Destroyed = false;                   
+                    Visible = false;
+                    Destroyed = true;
 
                 }
 
-                if(Health)
+                if (Health)
                 {
                     player.Health += 1;
-                    Destroyed = false;
+                    Visible = false;
+                    Destroyed = true;
                 }
             }
 
-            X -= speed;
-            consumableRect.X = (int) X;
 
+            Move();
             Sway();
 
-            if(X <= -50)
+            if (X <= -50)
             {
-                Destroyed = false;
+                Destroyed = true;
+                Visible = false;
             }
         }
 
@@ -134,15 +143,24 @@ namespace EchoProtype
             {
                 deltaY = maxY;
             }
-            
-            if(deltaY == maxY)
+
+            if (deltaY == maxY)
             {
-                Y -= .5f; 
+                Y -= .5f;
             }
 
             if (deltaY == minY)
             {
                 Y += .5f;
+            }
+        }
+
+        private void Move()
+        {
+            if (!Destroyed)
+            {
+                X -= speed;
+                consumableRect.X = (int)X;
             }
         }
     }

@@ -4,41 +4,35 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/ball.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/brick.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/MissSound.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/PaddleBounceSound.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/StartSound.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/WallBounceSound.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/Arial20.spritefont</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/BrickSound.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/Title.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/echoAmb.wav</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bgsound.mp3</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/black.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/black01.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/black02.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/black03.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/echosound.mp3</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/Maze1.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/snake01.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/sightBlocker.jpg</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/vertbrick.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/FG.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle 5.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle1.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle2.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle3.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/obstacle4.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/powerupfirefly.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/powerupfruit.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/gameoverscreen.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bat01.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bat02.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bat03.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/bat04.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/redheart.png</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/wings.mp3</File>
-    <File>C:/Users/u1091197/Documents/GitWorkSpace/EchoPrototype/EchoProtype/Content/hit01.mp3</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/bgsound.mp3</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/BrickSound.wav</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/echoAmb.wav</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/echosound.mp3</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/hit01.mp3</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/StartSound.wav</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/SoundEffects/wings.mp3</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/bat01.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/bat02.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/bat03.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/bat04.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/black.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/black01.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/black02.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/black03.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/FG.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/gameoverscreen.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/newSight.jpg</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/obstacle 5.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/obstacle1.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/obstacle2.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/obstacle3.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/obstacle4.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/powerupfirefly.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/powerupfruit.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/redheart.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/sightBlocker.jpg</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/Title.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Sprites/vertbrick.png</File>
+    <File>C:/Users/luis/Documents/GitHub/EchoPrototype-master/EchoProtype/Content/Fonts/Arial20.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

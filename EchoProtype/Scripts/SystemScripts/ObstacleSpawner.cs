@@ -23,11 +23,11 @@ namespace EchoProtype
         private int counter;
         private float spawnTimer;
         private float deltaTime;
-        private GameTime gameTime;
+        private GameManager gameManager;
         public Stalagmite[] obstacles;
         private Random rand;
 
-        public ObstacleSpawner(int totalNumObs, int maxX,int minX,int maxY, int minY,int maxTime,int minTime, int speed,SpriteBatch spriteBatch, GameContent gameContent)
+        public ObstacleSpawner(int totalNumObs, int maxX,int minX,int maxY, int minY,int maxTime,int minTime, int speed,GameManager gameManager)
         {
             this.maxTime = maxTime;
             this.minTime = minTime;
@@ -36,67 +36,61 @@ namespace EchoProtype
             this.minY = minY;
             this.maxY = maxY;
             this.speed = speed;
+            this.gameManager = gameManager;
             obstacles = new Stalagmite[totalNumObs];
-            gameTime = new GameTime();
             rand = new Random();
-            spawnTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
+            spawnTimer = 0;
             deltaTime = rand.Next(minTime, maxTime);
             for (int i = 0; i < obstacles.Length; i++)
             {
                 float X = rand.Next(minX, maxX);
                 float Y = rand.Next(minY, maxY);
 
-                obstacles[i] = new Stalagmite((float)X,(float)Y,false,spriteBatch,gameContent);
+                obstacles[i] = new Stalagmite((float)X,(float)Y,speed,false,gameManager);
             }
         }
         public void Draw()
         {          
             for (int i = 0; i < obstacles.Length; i++)
             {
-                if(obstacles[i].Destoyed)
-                {
                     obstacles[i].Draw();
-                }
-            }
-
-            Move();
-        }
-        
-        public void Move()
-        {
-            for(int i = 0; i < obstacles.Length; i++)
-            {
-                if (obstacles[i].Destoyed)
-                {
-                    obstacles[i].X -= speed;
-                    obstacles[i].hitBox = new Rectangle((int)(obstacles[i].X - speed), (int)obstacles[i].Y, obstacles[i].hitBox.Width, obstacles[i].hitBox.Height);
-                }
-            }
-        }
+            }           
+        }             
 
         public void CleanUp()
         {
             for (int i = 0; i < obstacles.Length; i++)
             {
-                if (obstacles[i].Destoyed && obstacles[i].X < -50)
+                if (obstacles[i].X < -50)
                 {
-                    obstacles[i].Destoyed = false;                  
+                    obstacles[i].Destroyed = true;                  
                 }
             }
 
         }
 
-        public void Spawn(GameTime gameTime, bool gameStart)
+        public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length && gameStart)
-            {              
-                obstacles[counter].Destoyed = true;
+            for (int i = 0; i < obstacles.Length; i++)
+            {
+                obstacles[i].Update(gameTime);
+            }
+
+            Spawn(gameTime);
+            CleanUp();           
+        }
+
+        public void Spawn(GameTime gameTime)
+        {           
+            if (gameTime.TotalGameTime.TotalMilliseconds >= (spawnTimer + deltaTime) && counter < obstacles.Length && gameManager.gameStart)
+            {
+                obstacles[counter].Destroyed = false;
                 counter++;
-                deltaTime = rand.Next(minTime, maxTime);
+                deltaTime = rand.Next(minTime, maxTime);               
                 spawnTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
             }
 
-            if (counter == obstacles.Length & obstacles[obstacles.Length - 1].Destoyed == false) //change
+            if (counter == obstacles.Length & obstacles[obstacles.Length - 1].Destroyed == true)
             {
                 for (int i = 0; i < obstacles.Length; i++)
                 {

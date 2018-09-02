@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace EchoProtype
 {
-    class EchoWave
+    public class EchoWave
     {
         // public references & variables
         public Player parent;
@@ -80,7 +80,7 @@ namespace EchoProtype
             {
                 spriteBatch.Begin();
 
-                spriteBatch.Draw(GameContent.instance.imgBrick, collisionRectangles[0], Color.Yellow);
+                spriteBatch.Draw(GameContent.instance.imgStag, collisionRectangles[0], Color.Yellow);
 
                 spriteBatch.End();
             }

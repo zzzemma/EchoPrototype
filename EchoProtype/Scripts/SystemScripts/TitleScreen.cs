@@ -19,13 +19,13 @@ namespace EchoProtype
         private int screenWidth;
         private int screenHeight;
 
-        public TitleScreen(int screenWidth, int screenHeight, SpriteBatch spriteBatch, GameContent gameContent)
+        public TitleScreen(GameManager gameManager)
         {
+            this.spriteBatch = gameManager.spriteBatch;
+            this.gameContent = gameManager.gameContent;
+            this.screenHeight = gameManager.screenHeight;
+            this.screenWidth = gameManager.screenWidth;
             imgTitle = gameContent.imgTitle;
-            this.spriteBatch = spriteBatch;
-            this.gameContent = gameContent;
-            this.screenHeight = screenHeight;
-            this.screenWidth = screenWidth;
         }
 
         public void Draw()

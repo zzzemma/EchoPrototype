@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace EchoProtype
 {
-    class Player
+    public class Player
     {
         public float X { get; set; } //x position of paddle on screen
         public float Y { get; set; } //y position of paddle on screen
@@ -22,9 +22,8 @@ namespace EchoProtype
 
         public int Health { get; set; }//health
         public Rectangle playerRect { get; set; }
-        public bool Destroyed { get; set; }
+        public bool Destroyed { get; set; }     
 
-        //private Texture2D imgPlayer { get; set; }  //cached image of the paddle
         private List<Texture2D> _batImages { get; set; }
         private int _currentBatIndex { get; set; }
         private Point _batImageSize { get; set; }
@@ -39,42 +38,42 @@ namespace EchoProtype
         private float _lastChangeTime { get; set; }
 
         private float _rotationAngle { get; set; }
-        private Game1 game { get; set; }
-        private Color batColor { get; set; }//change
+        private GameManager gameManager { get; set; }
 
-        private bool hurt;
-
+        private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
         public bool canTakeDamage = true;
 
-        Stack<Rectangle> locations = new Stack<Rectangle>();
+        private Color batColor { get; set; }//change
 
+        public bool hurt;
+
+        Stack<Rectangle> locations = new Stack<Rectangle>();
         public float echoCoolDown = 1f;
         public float lastEchoTime { get; set; }
         public List<EchoWave> echoWaves = new List<EchoWave>();
         public List<EchoWave> removeList = new List<EchoWave>();
 
-        private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
-
-        public Player(float x, float y, float screenWidth, float screenHeight, SpriteBatch spriteBatch, GameContent gameContent, Game1 game)
+        public Player(float x, float y, GameManager gameManager)
         {
             //:'(
-            this.game = game;
-            Destroyed = true;
+            this.gameManager = gameManager;
+            Destroyed = false;
+            hurt = false;
             X = x;
             Y = y;
-            Width = 4;//change
-            Height = 2;
+            Width = 10;//change
+            Height = 5;
             Health = 5;
 
 
-            _batImages = gameContent.batList;
+            _batImages = gameManager.gameContent.batList;
             _currentBatIndex = 0;
             _batImageSize = new Point(_batImages[0].Width, _batImages[0].Height);
 
-            _sightBlocker = gameContent.blacksmall;
+            _sightBlocker = gameManager.gameContent.blacksmall;
             _sightImageSize = new Point(_sightBlocker.Width, _sightBlocker.Height);
 
-            _heartpic = gameContent.redheart;
+            _heartpic = gameManager.gameContent.redheart;
             _heartImageSize = new Point(_heartpic.Width, _heartpic.Height);
 
             _lastChangeTime = 0;
@@ -83,9 +82,9 @@ namespace EchoProtype
 
             lastEchoTime = 0;
 
-            this.spriteBatch = spriteBatch;
-            ScreenWidth = screenWidth;
-            ScreenHeight = screenHeight;
+            this.spriteBatch = gameManager.spriteBatch;
+            ScreenWidth = gameManager.screenWidth;
+            ScreenHeight = gameManager.screenHeight;
         }
 
         public void AddLocations(int n)
@@ -104,10 +103,19 @@ namespace EchoProtype
 
         public void Update(GameTime gameTime)
         {
+            playerRect = new Rectangle((int)X, (int)Y, (int)Width, (int)Height);//keeps track of player position
+
             var currentTime = (float)gameTime.TotalGameTime.TotalMilliseconds;
             currentTime /= 1000;
 
-            if(currentTime - _lastChangeTime > _imageChangeSpan)
+            if (Health <= 0 || X < -50)
+            {
+                Destroyed = true;
+                gameManager.scoreManager.flag = true;
+                gameManager.gameOver = true;
+            }
+
+            if (currentTime - _lastChangeTime > _imageChangeSpan)
             {
                 _currentBatIndex = (_currentBatIndex + 1) % 4;
 
@@ -116,19 +124,49 @@ namespace EchoProtype
 
             // update all echoWaves
             removeList.Clear();
-            foreach(var e in echoWaves)
+            foreach (var e in echoWaves)
             {
                 e.Update(gameTime);
             }
-            foreach(var e in removeList)
+            foreach (var e in removeList)
             {
                 echoWaves.Remove(e);
+            }
+
+            KeyboardState newKeyboardState = Keyboard.GetState();
+
+            //process keyboard events                           
+            if (newKeyboardState.IsKeyDown(Keys.Left))
+            {
+                MoveLeft();
+            }
+            if (newKeyboardState.IsKeyDown(Keys.Right))
+            {
+                MoveRight();
+            }
+
+            if (newKeyboardState.IsKeyDown(Keys.Up))
+            {
+                MoveUp();
+            }
+            if (newKeyboardState.IsKeyDown(Keys.Down))
+            {
+                MoveDown();
+            }
+
+            // echowave control
+            if (newKeyboardState.IsKeyDown(Keys.Space))
+            {
+                if (gameManager.gameStart && !gameManager.gameOver)
+                {
+                    CreateEchoWave(gameTime);
+                }
             }
         }
 
         public void Draw()
-        {
-            if (Destroyed)
+        {         
+            if (!Destroyed)
             {
                 var batDestinationRec = new Rectangle();
                 var batSize = new Point(100, 100);
@@ -142,7 +180,7 @@ namespace EchoProtype
 
                 //var sightDestinationRec = new Rectangle();
                 //sightDestinationRec.X = (int)this.X;
-                //sightDestinationRec.Y = (int)this.Y;
+               // sightDestinationRec.Y = (int)this.Y;
 
                 //sightDestinationRec.Size = sightSize;
 
@@ -158,25 +196,25 @@ namespace EchoProtype
                 //spriteBatch.Begin();
 
                 //spriteBatch.Draw(_sightBlocker,
-                //    sightDestinationRec,
-                //    null,
-                //    batColor,
-                //    _rotationAngle,
-                //    new Vector2(_sightImageSize.X / 2 + sightOffset.X, _sightImageSize.Y / 2 + sightOffset.Y),
-                //    SpriteEffects.None,
-                //    0f
-                //    );
+                //  sightDestinationRec,
+                //null,
+                //batColor,
+                //_rotationAngle,
+                //new Vector2(_sightImageSize.X / 2 + sightOffset.X, _sightImageSize.Y / 2 + sightOffset.Y),
+                //SpriteEffects.None,
+                //0f
+                //);
 
                 //spriteBatch.End();
 
-                foreach(var e in echoWaves)
+                foreach (var e in echoWaves)
                 {
                     e.Draw();
                 }
 
                 if (_currentBatIndex == 1)
                 {
-                    this.game.soundEffects[0].CreateInstance().Play();
+                    gameManager.soundEffects[0].CreateInstance().Play();
                 }
 
                 spriteBatch.Begin();
@@ -198,7 +236,6 @@ namespace EchoProtype
                     SpriteEffects.None,
                     0f
                     );
-                //change
                 spriteBatch.End();
 
                 spriteBatch.Begin();
@@ -227,29 +264,24 @@ namespace EchoProtype
         public void MoveUp()
         {
             Y = Y - 5;
-            //change
             if(Y < 20)
             {
                 Y = 20;
             }
-            //_rotationAngle -= 0.1f;
             _rotationAngle = Math.Max(_rotationAngle, -MathHelper.Pi / 2);
         }
         public void MoveDown()
         {
-            //change
             Y = Y + 5;
 
             if (Y > ScreenHeight - 20)
             {
                 Y = ScreenHeight - 20;
             }
-            //_rotationangle += 0.1f;
             _rotationAngle = Math.Min(_rotationAngle, MathHelper.Pi / 2);
         }
         public void MoveRight()
         {
-            //change
             X = X + 5;
 
             if (X > ScreenWidth - 50)
@@ -261,20 +293,14 @@ namespace EchoProtype
         public void CreateEchoWave(GameTime gt)
         {
             var currentTime = (float)gt.TotalGameTime.TotalMilliseconds / 1000;
-            if(currentTime - lastEchoTime > echoCoolDown)
+            if (currentTime - lastEchoTime > echoCoolDown)
             {
                 lastEchoTime = currentTime;
-                var echoWave = new EchoWave(gt, new Vector2(X,Y));
+                var echoWave = new EchoWave(gt, new Vector2(X, Y));
                 echoWaves.Add(echoWave);
                 echoWave.parent = this;
                 echoWave.spriteBatch = spriteBatch;
             }
-        }
-
-        //change
-        public void Hurt(bool hurt)
-        {
-            this.hurt = hurt;
         }
     }
 }

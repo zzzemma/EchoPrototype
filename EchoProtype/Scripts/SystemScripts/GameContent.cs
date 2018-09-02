@@ -13,10 +13,10 @@ namespace EchoProtype
 {
     public class GameContent
     {
-        // singleton instance
         public static GameContent instance;
 
         public Texture2D imgBrick { get; set; }
+        public Texture2D imgSquare { get; set; }
         public Texture2D imgTitle { get; set; }
         public Texture2D imgGameOver { get; set; }
         public Texture2D imgPlusFruit { get; set; }
@@ -38,24 +38,23 @@ namespace EchoProtype
         {
             instance = this;
 
-            echoAmb = Content.Load<SoundEffect>("echoAmb");
-            labelFont = Content.Load<SpriteFont>("Arial20");
-            imgBrick = Content.Load<Texture2D>("Brick");
-            imgTitle = Content.Load<Texture2D>("Title");
-            imgFireFly = Content.Load<Texture2D>("powerupfirefly");
-            imgGameOver = Content.Load<Texture2D>("gameoverscreen");
-            imgPlusFruit = Content.Load<Texture2D>("powerupfruit");
-            foregroundTexture = Content.Load<Texture2D>("FG");
-            blacksmall = Content.Load<Texture2D>("black");
-            redheart = Content.Load<Texture2D>("redheart");
-            imgStag = Content.Load<Texture2D>("vertbrick");
-            songbg = Content.Load<Song>("bgsound");
+            echoAmb = Content.Load<SoundEffect>("SoundEffects/echoAmb");
+            labelFont = Content.Load<SpriteFont>("Fonts/Arial20");
+            imgTitle = Content.Load<Texture2D>("Sprites/Title");
+            imgFireFly = Content.Load<Texture2D>("Sprites/powerupfirefly");
+            imgGameOver = Content.Load<Texture2D>("Sprites/gameoverscreen");
+            imgPlusFruit = Content.Load<Texture2D>("Sprites/powerupfruit");
+            foregroundTexture = Content.Load<Texture2D>("Sprites/FG");
+            blacksmall = Content.Load<Texture2D>("Sprites/black");
+            redheart = Content.Load<Texture2D>("Sprites/redheart");
+            imgStag = Content.Load<Texture2D>("Sprites/vertbrick");
+            songbg = Content.Load<Song>("SoundEffects/bgsound");
 
             blackEchoList = new List<Texture2D>();
             for (var i = 0; i < 3; i++)
             {
                 var index = i + 1;
-                var currentEcho = Content.Load<Texture2D>("black0" + index);
+                var currentEcho = Content.Load<Texture2D>("Sprites/black0" + index);
                 blackEchoList.Add(currentEcho);
             }
 
@@ -63,7 +62,7 @@ namespace EchoProtype
             for (var i = 0; i < 4; i++)
             {
                 var index = i + 1;
-                var currentBat = Content.Load<Texture2D>("bat0" + index);
+                var currentBat = Content.Load<Texture2D>("Sprites/bat0" + index);
                 batList.Add(currentBat);
             }
         }

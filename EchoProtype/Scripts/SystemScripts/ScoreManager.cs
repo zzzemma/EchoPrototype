@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EchoProtype
 {
-    class Scoremanager
+    public class Scoremanager
     {
 
         private SpriteBatch spriteBatch;
@@ -19,12 +19,12 @@ namespace EchoProtype
         private int currenttime;
         public bool flag = false;
         private int extraPoints;
-        public Scoremanager(int screenWidth, int screenHeight, SpriteBatch spriteBatch, GameContent gameContent)
+        public Scoremanager(GameManager gameManager)
         {
-            this.spriteBatch = spriteBatch;
-            this.gameContent = gameContent;
-            this.screenHeight = screenHeight;
-            this.screenWidth = screenWidth;
+            this.spriteBatch = gameManager.spriteBatch;
+            this.gameContent = gameManager.gameContent;
+            this.screenHeight = gameManager.screenHeight;
+            this.screenWidth = gameManager.screenWidth;
         }
         public void Draw(GameTime gameTime)
         {
