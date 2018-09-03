@@ -44,11 +44,11 @@ namespace EchoProtype
             damage = 1;
             player = gameManager.player;
 
-            if (Y > 0 && Y < 400)
+            if (Y > -10 && Y < 450)
             {
                 imgStag = gameManager.gameContent.imgfloatingRock;
             }
-            else if (Y <= 0)
+            else if (Y <= -10)
             {
                 int choice = new Random().Next(0, 2);
                 if (choice == 0)
@@ -196,11 +196,11 @@ namespace EchoProtype
         }
             public void assignImage()
             {
-            if (Y > 0 && Y < 450)
+            if (Y > -10 && Y < 450)
             {
                 imgStag = gameManager.gameContent.imgfloatingRock;
             }
-            else if (Y <= 0)
+            else if (Y <= -10)
             {
                 int choice = new Random().Next(0, 2);
                 if (choice == 0)
