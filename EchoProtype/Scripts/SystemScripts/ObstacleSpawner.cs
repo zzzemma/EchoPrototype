@@ -102,5 +102,13 @@ namespace EchoProtype
                 counter = 0;
             }
         }
+
+        public void reset()
+        {
+            for (int i = 0; i < obstacles.Length; i++)
+            {
+                obstacles[i].Destroyed = true;
+            }
+        }
     }
 }

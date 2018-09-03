@@ -48,5 +48,12 @@ namespace EchoProtype
         {
             extraPoints -= points;
         }
+
+        public void resetScore(GameTime gameTime)
+        {
+            flytime = gameTime.TotalGameTime.Seconds;
+            extraPoints = 0;
+            flag = false;
+        }
     }
 }

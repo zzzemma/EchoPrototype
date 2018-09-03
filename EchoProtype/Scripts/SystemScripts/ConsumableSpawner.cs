@@ -111,5 +111,13 @@ namespace EchoProtype
                 return Consumable.Type.AddPoints;
             }
         }
+
+        public void reset()
+        {
+            for (int i = 0; i < consumables.Length; i++)
+            {
+               consumables[i].Destroyed = true;
+            }
+        }
     }
 }

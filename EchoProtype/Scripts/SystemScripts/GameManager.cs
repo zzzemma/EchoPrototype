@@ -25,7 +25,6 @@ namespace EchoProtype
         private ConsumableSpawner consumableSpawner;
         public Scoremanager scoreManager;
         public List<SoundEffect> soundEffects;
-        private GameManager game;
 
         public GameManager()
         {
@@ -101,12 +100,7 @@ namespace EchoProtype
                 obstacleSpawner.Update(gameTime);
                 consumableSpawner.Update(gameTime);
             }
-
-            if (IsActive == false)
-            {
-                return;  //our window is not active don't update
-            }
-
+          
 
             //process keyboard events      
 
@@ -129,9 +123,14 @@ namespace EchoProtype
 
                 if(gameOver)
                 {
-                    game = new GameManager();
-                    game.Run();
-                    this.Exit();
+                    gameOver = false;
+                    player.Health = 5;
+                    player.Destroyed = false;
+                    player.X = 250;
+                    player.Y = 350;
+                    scoreManager.resetScore(gameTime);
+                    obstacleSpawner.reset();
+                    consumableSpawner.reset();                   
                 }
             }
             base.Update(gameTime);
