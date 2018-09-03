@@ -46,7 +46,7 @@ namespace EchoProtype
                 float X = rand.Next(minX, maxX);
                 float Y = rand.Next(minY, maxY);
 
-                obstacles[i] = new Stalagmite((float)X,(float)Y,speed,false,gameManager);
+                obstacles[i] = new Stalagmite((float)X,(float)Y,speed,gameManager);
             }
         }
         public void Draw()
@@ -96,6 +96,7 @@ namespace EchoProtype
                 {
                     obstacles[i].X = rand.Next(minX, maxX);
                     obstacles[i].Y = rand.Next(minY, maxY);
+                    obstacles[i].assignImage();
                 }
                 speed += 1;
                 counter = 0;

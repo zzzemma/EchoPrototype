@@ -572,3 +572,5 @@ C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\obj\x86\Debug\EchoProty
 C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\obj\x86\Debug\EchoProtype.csproj.CopyComplete
 C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\obj\x86\Debug\EchoProtype.exe
 C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\obj\x86\Debug\EchoProtype.pdb
+C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\bin\Windows\x86\Debug\Content\Sprites\flippedobstacle1.xnb
+C:\Users\luis\Documents\GitHub\EchoPrototype\EchoProtype\bin\Windows\x86\Debug\Content\Sprites\flippedobstacle2.xnb

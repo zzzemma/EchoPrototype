@@ -62,7 +62,7 @@ namespace EchoProtype
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.ApplyChanges();
 
-            player = new Player(200.0f,350.0f,this);
+            player = new Player(200.0f,100.0f,this);
             titleScreen = new TitleScreen(this);
             scoreManager = new Scoremanager(this);
             gameOverScreen = new EndingScreen(this);
@@ -74,8 +74,8 @@ namespace EchoProtype
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 20, 20, 700, 200, 9, this);
-            consumableSpawner = new ConsumableSpawner(20, screenWidth, screenWidth - 100, screenHeight - 20, 20, 750, 250, 5, this);
+            obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight-100, -200, 700, 200, 9, this);
+            consumableSpawner = new ConsumableSpawner(20, screenWidth, screenWidth - 100, screenHeight-50, 50, 750, 250, 5, this);
 
             soundEffects.Add(Content.Load<SoundEffect>("wings"));
             soundEffects.Add(Content.Load<SoundEffect>("hit01"));

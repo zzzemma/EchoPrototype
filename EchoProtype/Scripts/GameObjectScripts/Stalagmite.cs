@@ -26,7 +26,7 @@ namespace EchoProtype
         public float speed;
         public bool Destroyed { get; set; } //does brick still exist?
         public bool Visible { get; set; }
-        public Rectangle hitBox { get; set; }
+        private Rectangle hitBox;
 
         public int damage { get; set; }
 
@@ -36,32 +36,62 @@ namespace EchoProtype
         private SpriteBatch spriteBatch;  //allows us to write on backbuffer when we need to draw self
         private Player player;
 
-        public Stalagmite(float x, float y, float speed, bool vert, GameManager gameManager)
+        public Stalagmite(float x, float y, float speed, GameManager gameManager)
         {
             X = x;
             Y = y;
             this.speed = speed;
             damage = 1;
             player = gameManager.player;
-            imgStag = gameManager.gameContent.imgStag;
-            Width = imgStag.Width;
+
+            if (Y > 0 && Y < 400)
+            {
+                imgStag = gameManager.gameContent.imgfloatingRock;
+            }
+            else if (Y <= 0)
+            {
+                int choice = new Random().Next(0, 2);
+                if (choice == 0)
+                {
+                    imgStag = gameManager.gameContent.imgStalactite1;
+                }
+                else
+                {
+                    imgStag = gameManager.gameContent.imgStalactite2;
+                }
+            }
+            else
+            {
+                int choice = new Random().Next(0, 2);
+                if (choice == 0)
+                {
+                    imgStag = gameManager.gameContent.imgStalagmite1;
+                }
+                else
+                {
+                    imgStag = gameManager.gameContent.imgStalagmite2;
+                }
+            }
+
+                Width = imgStag.Width;
             Height = imgStag.Height;
+
             dmgDelayTime = 750;
             damageTimer = 0;
             visionDelayTime = 1000;
             visionTimer = 0;
             this.spriteBatch = gameManager.spriteBatch;
-            hitBox = new Rectangle((int)X, (int)Y, (int)(Width + (Width * 0.60)), (int)(Height + Height * 0.60));// Rectangle for the wall collider
+            hitBox = new Rectangle((int)X, (int)Y, (int)(Width), (int)(Height));// Rectangle for the wall collider
             Destroyed = true;
             Visible = false;
             this.gameManager = gameManager;
         }
 
         public void Draw()
-        {            
+        {
             if (!Destroyed && Visible)
             {
-                spriteBatch.Draw(imgStag, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), 2.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(imgStag, new Vector2(X, Y), null, Color.White, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0);
             }
         }
 
@@ -80,17 +110,17 @@ namespace EchoProtype
 
             //checks for collisions  against the player        
             if (!Destroyed && HitTest(player.playerRect, hitBox))
-            {               
+            {
                 //makes player take damage
                 if (player.canTakeDamage)
-                {                  
+                {
                     player.Health -= damage;
-                    damageTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;                  
+                    damageTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
                     player.canTakeDamage = false;
                     player.hurt = true;
                     gameManager.soundEffects[1].CreateInstance().Play();
                 }
-              
+
                 // collision pushes player in the direction opposite of their movement.
                 if (newKeyboardState.IsKeyDown(Keys.Left))
                 {
@@ -122,12 +152,12 @@ namespace EchoProtype
 
             for (int i = 0; i < player.echoWaves.Count; i++)
             {
-                for(int j = 0; j < player.echoWaves[i].collisionRectangles.Count;j++)
-                if (!Destroyed && HitTest(player.echoWaves[i].collisionRectangles[j], hitBox))
-                {
-                        visionTimer = (float) gameTime.TotalGameTime.TotalMilliseconds;
+                for (int j = 0; j < player.echoWaves[i].collisionRectangles.Count; j++)
+                    if (!Destroyed && HitTest(player.echoWaves[i].collisionRectangles[j], hitBox))
+                    {
+                        visionTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
                         Visible = true;
-                }
+                    }
             }
 
             VisionCheck(gameTime);
@@ -147,9 +177,9 @@ namespace EchoProtype
 
         private void VisionCheck(GameTime gameTime)
         {
-            if(Visible)
+            if (Visible)
             {
-                if(gameTime.TotalGameTime.TotalMilliseconds >= visionTimer + visionDelayTime)
+                if (gameTime.TotalGameTime.TotalMilliseconds >= visionTimer + visionDelayTime)
                 {
                     Visible = false;
                 }
@@ -158,13 +188,44 @@ namespace EchoProtype
 
         private void Move()
         {
-                if (!Destroyed)
+            if (!Destroyed)
+            {
+                X -= speed;
+                hitBox.X = (int)(X - speed);
+            }
+        }
+            public void assignImage()
+            {
+            if (Y > 0 && Y < 450)
+            {
+                imgStag = gameManager.gameContent.imgfloatingRock;
+            }
+            else if (Y <= 0)
+            {
+                int choice = new Random().Next(0, 2);
+                if (choice == 0)
                 {
-                    X -= speed;
-                    hitBox = new Rectangle((int)(X - speed), (int)Y, hitBox.Width,hitBox.Height);
+                    imgStag = gameManager.gameContent.imgStalactite1;
+                }
+                else
+                {
+                    imgStag = gameManager.gameContent.imgStalactite2;
+                }
+            }
+            else
+            {
+                int choice = new Random().Next(0, 2);
+                if (choice == 0)
+                {
+                    imgStag = gameManager.gameContent.imgStalagmite1;
+                }
+                else
+                {
+                    imgStag = gameManager.gameContent.imgStalagmite2;
                 }
             }
         }
     }
+}
 
 

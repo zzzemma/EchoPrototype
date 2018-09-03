@@ -21,6 +21,11 @@ namespace EchoProtype
         public Texture2D imgGameOver { get; set; }
         public Texture2D imgPlusFruit { get; set; }
         public Texture2D imgFireFly { get; set; }
+        public Texture2D imgStalagmite1 { get; set; }
+        public Texture2D imgStalagmite2 { get; set; }
+        public Texture2D imgStalactite1 { get; set; }
+        public Texture2D imgStalactite2 { get; set; }
+        public Texture2D imgfloatingRock { get; set; }
         public SpriteFont labelFont { get; set; }
         public SoundEffect echoAmb { get; set; }
 
@@ -48,7 +53,12 @@ namespace EchoProtype
             blacksmall = Content.Load<Texture2D>("Sprites/black");
             redheart = Content.Load<Texture2D>("Sprites/redheart");
             imgStag = Content.Load<Texture2D>("Sprites/vertbrick");
-            songbg = Content.Load<Song>("SoundEffects/bgsound");
+            imgStalagmite1 = Content.Load<Texture2D>("Sprites/obstacle1");
+            imgStalagmite2 = Content.Load<Texture2D>("Sprites/obstacle2");
+            imgStalactite1 = Content.Load<Texture2D>("Sprites/flippedobstacle1");
+            imgStalactite2 = Content.Load<Texture2D>("Sprites/flippedobstacle2");
+            imgfloatingRock = Content.Load<Texture2D>("Sprites/obstacle3");
+            songbg = Content.Load<Song>("SoundEffects/bgsound");            
 
             blackEchoList = new List<Texture2D>();
             for (var i = 0; i < 3; i++)

@@ -61,8 +61,8 @@ namespace EchoProtype
             hurt = false;
             X = x;
             Y = y;
-            Width = 15;//change
-            Height = 10;
+            Width = 20;//change
+            Height = 15;
             Health = 5;
 
 
