@@ -44,7 +44,7 @@ namespace EchoProtype
             imgFireFly = Content.Load<Texture2D>("Sprites/powerupfirefly");
             imgGameOver = Content.Load<Texture2D>("Sprites/gameoverscreen");
             imgPlusFruit = Content.Load<Texture2D>("Sprites/powerupfruit");
-            foregroundTexture = Content.Load<Texture2D>("Sprites/FG");
+            foregroundTexture = Content.Load<Texture2D>("Sprites/newSight");
             blacksmall = Content.Load<Texture2D>("Sprites/black");
             redheart = Content.Load<Texture2D>("Sprites/redheart");
             imgStag = Content.Load<Texture2D>("Sprites/vertbrick");

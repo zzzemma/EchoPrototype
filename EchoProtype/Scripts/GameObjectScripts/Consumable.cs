@@ -42,14 +42,15 @@ namespace EchoProtype
         {
             visionDelayTime = 1000;
             visionTimer = 0;
-            Destroyed = false;
-            Visible = false;
+            Destroyed = true;
             switch (type)
             {
                 case Type.Health:
                     {
                         imgConsumable = gameManager.gameContent.imgPlusFruit;
-                        Health = true;                       
+                        Health = true;
+                        Visible = false;
+                        Points = false;
                         break;
                     }
 
@@ -58,8 +59,9 @@ namespace EchoProtype
 
                         imgConsumable = gameManager.gameContent.imgFireFly;
                         Points = true;
+                        Health = false;
                         Visible = true;
-                        numPoints = 1000;
+                        numPoints = 50;
                         break;
                     }
                 case Type.MinusPoints:
@@ -78,8 +80,6 @@ namespace EchoProtype
             minY = Y + 10;
             maxY = Y - 10;
             deltaY = maxY;
-            Destroyed = false;
-            Visible = false;
             this.scoreManager = gameManager.scoreManager;
             this.spriteBatch = gameManager.spriteBatch;
             consumableRect = new Rectangle((int)X, (int)Y, imgConsumable.Width / 2, imgConsumable.Height / 2);
@@ -162,24 +162,28 @@ namespace EchoProtype
 
         public void Sway()
         {
-            if (Y == maxY)
+            if (!Destroyed)
             {
-                deltaY = minY;
-            }
+                if (Y == maxY)
+                {
+                    deltaY = minY;
+                }
 
-            if (Y == minY)
-            {
-                deltaY = maxY;
-            }
+                if (Y == minY)
+                {
+                    deltaY = maxY;
+                }
 
-            if (deltaY == maxY)
-            {
-                Y -= .5f;
-            }
+                if (deltaY == maxY)
+                {
+                    Y -= .5f;
+                }
 
-            if (deltaY == minY)
-            {
-                Y += .5f;
+                if (deltaY == minY)
+                {
+                    Y += .5f;                   
+                }
+                consumableRect.Y = (int)Y;
             }
         }
 

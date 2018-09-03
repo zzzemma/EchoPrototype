@@ -22,10 +22,9 @@ namespace EchoProtype
         public bool gameStart;
         public bool gameOver;
         private ObstacleSpawner obstacleSpawner;
+        private ConsumableSpawner consumableSpawner;
         public Scoremanager scoreManager;
         public List<SoundEffect> soundEffects;
-        private Consumable consumable;
-        private Consumable consumableHealth;
         private GameManager game;
 
         public GameManager()
@@ -75,11 +74,8 @@ namespace EchoProtype
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
             //obstacle code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 10, 10, 750, 250, 9, this);
-
-            consumable = new Consumable(1200, 300, 5, Consumable.Type.AddPoints, this); 
-            consumableHealth = new Consumable(1000, 400, 3, Consumable.Type.Health, this);
-
+            obstacleSpawner = new ObstacleSpawner(50, screenWidth, screenWidth - 100, screenHeight - 20, 20, 700, 200, 9, this);
+            consumableSpawner = new ConsumableSpawner(20, screenWidth, screenWidth - 100, screenHeight - 20, 20, 750, 250, 5, this);
 
             soundEffects.Add(Content.Load<SoundEffect>("wings"));
             soundEffects.Add(Content.Load<SoundEffect>("hit01"));
@@ -103,8 +99,7 @@ namespace EchoProtype
                 backGround.Update(gameTime);
                 player.Update(gameTime);
                 obstacleSpawner.Update(gameTime);
-                consumable.Update(gameTime);
-                consumableHealth.Update(gameTime);
+                consumableSpawner.Update(gameTime);
             }
 
             if (IsActive == false)
@@ -169,24 +164,23 @@ namespace EchoProtype
             }
             else
             {
-                spriteBatch.Begin();
-
-                obstacleSpawner.Draw();
-                consumableHealth.Draw();
-
-                spriteBatch.End();
-
-                player.Draw();
-
                 spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
-                consumable.Draw();
 
                 backGround.Draw();
 
                 scoreManager.Draw(gameTime);
 
                 spriteBatch.End();
+                spriteBatch.Begin();
+
+                obstacleSpawner.Draw();
+                consumableSpawner.Draw();
+
+                spriteBatch.End();
+
+                player.Draw();
+
             }
             base.Draw(gameTime);
         }
